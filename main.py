@@ -1,7 +1,5 @@
-from lib import extract
+from lib import extract, group
 import re
 
 msgs = extract.read_pcap('log/ftp')
-
-for msg in msgs:
-	print(msg)
+group.div_format(msgs)

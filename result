@@ -1,115 +1,28 @@
-ftp3.pcapng
-ftp1.pcapng
-ftp2.pcapng
-File 0
-Request:USER acc2\r\n
-Response: 331 Please specify the password.\r\n
-
-File 0
-Request:PASS pwd2\r\n
-Response: 230 Login successful.\r\n
-
-File 0
-Request:SYST\r\n
-Response: 215 UNIX Type: L8\r\n
-
-File 0
-Request:MKD bbb\r\n
-Response: 257 "/bbb" created\r\n
-
-File 0
-Request:CWD bbb\r\n
-Response: 250 Directory successfully changed.\r\n
-
-File 0
-Request:CWD ..\r\n
-Response: 250 Directory successfully changed.\r\n
-
-File 0
-Request:RMD bbb\r\n
-Response: 250 Remove directory operation successful.\r\n
-
-File 0
-Request:QUIT\r\n
-Response: 221 Goodbye.\r\n
-
-File 1
-Request:USER acc1\r\n
-Response: 331 Please specify the password.\r\n
-
-File 1
-Request:PASS pwd1\r\n
-Response: 230 Login successful.\r\n
-
-File 1
-Request:SYST\r\n
-Response: 215 UNIX Type: L8\r\n
-
-File 1
-Request:MKD aaa\r\n
-Response: 257 "/home/andy/ftp/aaa" created\r\n
-
-File 1
-Request:CWD aaa\r\n
-Response: 250 Directory successfully changed.\r\n
-
-File 1
-Request:TYPE I\r\n
-Response: 200 Switching to Binary mode.\r\n
-
-File 1
-Request:PORT 192,168,100,211,139,3\r\n
-Response: 200 PORT command successful. Consider using PASV.\r\n
-
-File 1
-Request:STOR file\r\n
-Response: 150 Ok to send data.\r\n
-
-File 1
-Request:DELE file\r\n
-Response: 250 Delete operation successful.\r\n
-
-File 1
-Request:CWD ..\r\n
-Response: 250 Directory successfully changed.\r\n
-
-File 1
-Request:RMD aaa\r\n
-Response: 250 Remove directory operation successful.\r\n
-
-File 1
-Request:QUIT\r\n
-Response: 221 Goodbye.\r\n
-
-File 2
-Request:USER andy\r\n
-Response: 331 Please specify the password.\r\n
-
-File 2
-Request:PASS andy0113\r\n
-Response: 230 Login successful.\r\n
-
-File 2
-Request:SYST\r\n
-Response: 215 UNIX Type: L8\r\n
-
-File 2
-Request:TYPE I\r\n
-Response: 200 Switching to Binary mode.\r\n
-
-File 2
-Request:PORT 192,168,100,211,185,39\r\n
-Response: 200 PORT command successful. Consider using PASV.\r\n
-
-File 2
-Request:STOR test\r\n
-Response: 150 Ok to send data.\r\n
-
-File 2
-Request:DELE test\r\n
-Response: 250 Delete operation successful.\r\n
-
-File 2
-Request:QUIT\r\n
-Response: 221 Goodbye.\r\n
-
+['USER', 'acc2\\r\\n']
+['PASS', 'pwd2\\r\\n']
+['SYST\\r\\n']
+['MKD', 'bbb\\r\\n']
+['CWD', 'bbb\\r\\n']
+['CWD', '..\\r\\n']
+['RMD', 'bbb\\r\\n']
+['QUIT\\r\\n']
+['USER', 'acc1\\r\\n']
+['PASS', 'pwd1\\r\\n']
+['SYST\\r\\n']
+['MKD', 'aaa\\r\\n']
+['CWD', 'aaa\\r\\n']
+['TYPE', 'I\\r\\n']
+['PORT', '192', '168', '100', '211', '139', '3\\r\\n']
+['STOR', 'file\\r\\n']
+['DELE', 'file\\r\\n']
+['CWD', '..\\r\\n']
+['RMD', 'aaa\\r\\n']
+['QUIT\\r\\n']
+['USER', 'andy\\r\\n']
+['PASS', 'andy0113\\r\\n']
+['SYST\\r\\n']
+['TYPE', 'I\\r\\n']
+['PORT', '192', '168', '100', '211', '185', '39\\r\\n']
+['STOR', 'test\\r\\n']
+['DELE', 'test\\r\\n']
+['QUIT\\r\\n']

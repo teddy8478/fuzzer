@@ -1,5 +1,6 @@
 from scapy.all import *
 from os import listdir
+import re
 
 def read_pcap(floder):
 	ret = []
@@ -22,7 +23,8 @@ class msg:
 		self.req = req
 		self.resp = resp
 		self.file = f
-
+		self.parts = re.split(' |:|/|&|=|\r|\n|,', req)
+		self.group = -1
 	def __repr__(self):
 		re = 'File ' + str(self.file) + '\nRequest:' + self.req + '\nResponse: ' + self.resp + '\n'
 		return re
