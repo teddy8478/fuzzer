@@ -2,16 +2,30 @@ import socket
 import re
 import os
 import pdb
+import time
 
-def tcp_fuzz(msg):
-	host = '192.168.100.208'
-	port = 21
-	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	s.connect((host, port))
-	s.sendall(msg.req.encode())
-	data = s.recv(1024)
-	s.close()
-	print('Received', repr(data))
+def tcp_fuzz(msgs):
+	host = '192.168.200.5'
+	port = 49153
+	
+	cnt = 1
+	for m in msgs:
+		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		s.connect((host, port))
+		#print(cnt)
+		cnt += 1
+		data = ''
+		s.send(m.req.encode())
+		#print(m.req)			
+		while True:			
+			seg = s.recv(1024)			
+			if not seg:
+				break
+			else:
+				data += seg.decode("utf-8")				
+		#print('Received', repr(data))
+		s.close()
+
 	return data
 
 def mutate(msg):

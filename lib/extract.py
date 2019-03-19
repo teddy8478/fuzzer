@@ -9,13 +9,24 @@ def read_pcap(floder):
 	index = 0
 	for filename in listdir(floder):
 		packets = rdpcap(str(floder) + '/' + str(filename))
+		raw = []
+		src = packets[0][IP].src
+		dst = packets[0][IP].dst
+		pre_src = dst
+		for p in packets:
+			if p[IP].src == pre_src:
+				raw[-1] += str(p[Raw])[2:-1]
+			else:
+				raw.append(str(p[Raw])[2:-1])
+			pre_src = p[IP].src
+		
+		
 		i=0
-		num = len(packets)
+		num = len(raw)
 		for i in range(int(num/2)): #create resp/req pair
-			req_raw = str(packets[i*2][Raw])
-			req_raw = req_raw[2:-1] #remove unicode u'XXXX'
-			resp_raw = str(packets[i*2+1][Raw])
-			resp_raw = resp_raw[2:-1]
+			req_raw = raw[i*2]
+			resp_raw = raw[i*2 + 1]
+			
 			req_raw = req_raw.replace('\\r', '\r')
 			req_raw = req_raw.replace('\\n', '\n')
 			resp_raw = resp_raw.replace('\\r', '\r')
