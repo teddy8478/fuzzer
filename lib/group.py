@@ -8,23 +8,32 @@ def divide(msgs, index, pre_key):
 	key = []
 	type_num = []
 	#find the key index
+	'''
 	for i in range(index, len(msgs[0].parts)):
 		type_num.append(len(Counter([m.parts[i] for m in msgs])))
 		if {m.parts[i] for m in msgs} == {''}:
 			type_num[-1] = 10000
 	cur_index = index + type_num.index(min(type_num))
-
-	#check whether need to terminate
+	'''
+	cur_index = index
 	uni_msg = []
 	for m in msgs:
 		if m.req in [u.req for u in uni_msg] and len(pre_key) > 0:
 			continue
 		else:
 			uni_msg.append(m)
-	cnt = Counter([m.parts[cur_index] for m in uni_msg])
-	key_set = cnt.keys()
-	cv = list(cnt.values())
-	if Counter(cv)[1] / len(uni_msg) > 0.5 or index + 1  == len(msgs[0].parts):
+	if len(uni_msg) == 1:
+		return [group(msgs[0].parts, msgs)]
+	#check whether need to terminate
+	while True:		
+		cnt = Counter([m.parts[cur_index] for m in uni_msg])
+		key_set = cnt.keys()
+		cv = list(cnt.values())
+		if Counter(cv)[1] / len(uni_msg) <= 0.5:
+			break
+		else:
+			cur_index += 1
+	if index + 1  == len(msgs[0].parts):	#in the end of msg
 		return [group(pre_key, msgs)]
 
 	for key in key_set:
@@ -76,7 +85,15 @@ class group:
 	
 	def __repr__(self):
 		re = ''
-		re += 'Keys: ' + str(self.keys) + '\nFields' + str(self.fields) + '\n'
+		#re += 'Keys: ' + str(self.keys) + '\nFields' + str(self.fields) + '\n'
+		l = len(self.keys)
+		deli = self.deli_order + ['']
+		for i in range(l):
+			if self.fields[i] == None:
+				re += str(self.keys[i]) 
+			else:
+				re += str(self.fields[i])
+			re += deli[i]
 		return re
 		
 

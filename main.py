@@ -33,11 +33,11 @@ for i in range(len(group_list)):
 group_order = [m.group.index for m in msgs]
 #print(group_order)
 #print(group_list)
-#print(group_list[1].msgs)
+print(group_list)
 #print(group_list[2].msgs)
 
 #for m in msgs:
-fuzz.tcp_fuzz([m for m in msgs if m.file == 0])
+#fuzz.tcp_fuzz([m for m in msgs if m.file == 0])
 
 trace = []
 for i in range(msgs[-1].file + 1):
