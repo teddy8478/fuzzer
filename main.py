@@ -34,7 +34,7 @@ group_order = [m.group.index for m in msgs]
 #print(group_order)
 #print(group_list)
 print(group_list)
-#print(group_list[2].msgs)
+print(fuzz.mutate(msgs[1]))
 
 #for m in msgs:
 #fuzz.tcp_fuzz([m for m in msgs if m.file == 0])

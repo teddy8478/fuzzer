@@ -84,7 +84,7 @@ class group:
 						
 	
 	def __repr__(self):
-		re = ''
+		re = 'Group: ' + str(self.index) + '\n'
 		#re += 'Keys: ' + str(self.keys) + '\nFields' + str(self.fields) + '\n'
 		l = len(self.keys)
 		deli = self.deli_order + ['']
