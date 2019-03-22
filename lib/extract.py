@@ -3,6 +3,7 @@ from os import listdir
 import re
 import pdb
 import pyshark
+import collections
 
 def read_pyshark(floder):
 	ret = []
@@ -12,16 +13,19 @@ def read_pyshark(floder):
 		name = str(floder) + '/' + str(filename)
 		#cap = pyshark.FileCapture(name, display_filter='tcp.stream eq %d' % 1)
 		cap = pyshark.FileCapture(name)
-		s_num = []
+		s_dict = {}
 		for c in cap:
-			if not c.tcp.stream in s_num:
-				s_num.append(c.tcp.stream)
-		for num in s_num:
-			cur_s = [c for c in cap if c.tcp.stream == num]
-			src = cur_s[0].ip.src
+			if int(c.tcp.stream) in s_dict.keys():
+				s_dict[int(c.tcp.stream)].append(c)
+			else:
+				s_dict[int(c.tcp.stream)] = [c]
+		s_dict = collections.OrderedDict(sorted(s_dict.items()))
+		
+		for num, packets in s_dict.items():
+			src = packets[0].ip.src
 			req = ''
 			resp = ''
-			for packet in cur_s:
+			for packet in packets:
 				raw = str(packet.tcp.payload).replace(':', '')
 				if packet.ip.src == src:
 					req += bytearray.fromhex(raw).decode()	
@@ -85,8 +89,8 @@ class msg:
 		self.req = req
 		self.resp = resp
 		self.file = f
-		self.parts = re.split(' |:|/|&|=|\r|\n|,|\?', req)
-		self.resp_parts = re.split(' |:|/|&|=|\r|\n|,|\?', resp)
+		self.parts = re.split(' |:|/|&|=|\r|\n|,|\?|\"|<|>|#|-', req)
+		self.resp_parts = re.split(' |:|/|&|=|\r|\n|,|\?|\"|<|>|#|-', resp)
 		self.group = -1
 		self.keys = []
 		self.deli_order = req

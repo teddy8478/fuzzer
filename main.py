@@ -32,8 +32,8 @@ for i in range(len(group_list)):
 		msgs[m].group = group_list[i]
 group_order = [m.group.index for m in msgs]
 print(group_list)
-#print(fuzz.mutate(msgs[1]))
-
+pdb.set_trace()
+print(fuzz.mutate(msgs[3]))
 #for m in msgs:
 #fuzz.tcp_fuzz([m for m in msgs if m.file == 0])
 
