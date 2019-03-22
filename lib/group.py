@@ -25,7 +25,7 @@ def divide(msgs, index, pre_key):
 	if len(uni_msg) == 1:
 		return [group(msgs[0].parts, msgs)]
 	#check whether need to terminate
-	while True:		
+	while cur_index < len(msgs[0].parts):		
 		cnt = Counter([m.parts[cur_index] for m in uni_msg])
 		key_set = cnt.keys()
 		cv = list(cnt.values())
@@ -33,7 +33,7 @@ def divide(msgs, index, pre_key):
 			break
 		else:
 			cur_index += 1
-	if index + 1  == len(msgs[0].parts):	#in the end of msg
+	if cur_index == len(msgs[0].parts):	#in the end of msg
 		return [group(pre_key, msgs)]
 
 	for key in key_set:

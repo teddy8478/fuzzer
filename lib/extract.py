@@ -2,6 +2,35 @@ from scapy.all import *
 from os import listdir
 import re
 import pdb
+import pyshark
+
+def read_pyshark(floder):
+	ret = []
+	index = 0
+	f_num = 0
+	for filename in listdir(floder):
+		name = str(floder) + '/' + str(filename)
+		#cap = pyshark.FileCapture(name, display_filter='tcp.stream eq %d' % 1)
+		cap = pyshark.FileCapture(name)
+		s_num = []
+		for c in cap:
+			if not c.tcp.stream in s_num:
+				s_num.append(c.tcp.stream)
+		for num in s_num:
+			cur_s = [c for c in cap if c.tcp.stream == num]
+			src = cur_s[0].ip.src
+			req = ''
+			resp = ''
+			for packet in cur_s:
+				raw = str(packet.tcp.payload).replace(':', '')
+				if packet.ip.src == src:
+					req += bytearray.fromhex(raw).decode()	
+				else:
+					resp += bytearray.fromhex(raw).decode()
+			ret.append(msg(index, req, resp, f_num))
+			index += 1
+		f_num += 1
+	return ret
 
 def read_pcap(floder):
 	ret = []
@@ -34,6 +63,20 @@ def read_pcap(floder):
 			ret.append(msg(index, req_raw, resp_raw, cnt))
 			index += 1
 		cnt += 1
+	return ret
+
+def read_pcap_test(f):
+	ret = []
+	index = 0
+	packets = rdpcap(f)
+	for p in packets:
+		try:
+			req_raw = str(p[Raw])[2: -1]
+			ret.append(msg(index, req_raw, '', 0))
+			index += 1
+		except:
+			pass
+
 	return ret
 
 class msg:
