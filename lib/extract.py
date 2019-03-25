@@ -72,7 +72,7 @@ class msg:
 		self.keys = []
 		self.deli_order = req
 		
-		symbols = b' |:|/|&|=|\r|\n|,|\?|\"|<|>|#|-'
+		symbols = b' |:|/|&|=|\r|\n|,|\?|\"|<|>|#|-|[|]'
 		splits = re.split(symbols, req)
 		deli = req
 		for s in splits:

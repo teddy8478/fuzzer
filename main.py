@@ -21,7 +21,7 @@ for i in range(len(group_list)):
 	for m in group_list[i].member:
 		msgs[m].group = group_list[i]
 group_order = [m.group.index for m in msgs]
-#print(group_list)
+print(group_list[10])
 print(msgs[-1].parts)
 pdb.set_trace()
 #for g in group_list:

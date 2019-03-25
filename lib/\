@@ -87,12 +87,12 @@ class group:
 		re = b'Group: ' + str(self.index).encode() + b'\n'
 		#re += 'Keys: ' + str(self.keys) + '\nFields' + str(self.fields) + '\n'
 		l = len(self.keys)
-		deli = self.deli_order + [32]
+		deli = self.deli_order + [b'']
 		for i in range(l):
 			if self.fields[i] == None:
-				re += self.keys[i]
+				re += self.keys[i] 
 			else:
-				re += self.fields[i].encode()
+				re += str(self.fields[i]).encode()
 			re += chr(deli[i]).encode()
 		return bytes.decode(re)
 		
