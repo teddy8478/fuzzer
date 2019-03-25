@@ -2,19 +2,9 @@
 from lib import extract, group, fuzz, state
 import re
 import time
+
 import pdb
-'''
-data = ['GET iot/device?id=1&type=2',
-		'GET iot/device?id=20&type=1',
-		'GET iot/temprature?num=3&s=aaa',
-		'GET iot/temprature?num=5&s=bbb',
-		'DELETE device?id=9\r\n']
-msgs=[]
-i = 0
-for d in data:
-	msgs.append(extract.msg(i, d, '', 0))
-	i += 1
-'''
+
 msgs = extract.read_pyshark('log/plug')
 #msgs = extract.read_pcap_test('../pulsar/example.pcap')
 group_list = []
@@ -31,16 +21,19 @@ for i in range(len(group_list)):
 	for m in group_list[i].member:
 		msgs[m].group = group_list[i]
 group_order = [m.group.index for m in msgs]
-print(group_list)
+#print(group_list)
+print(msgs[-1].parts)
 pdb.set_trace()
-print(fuzz.mutate(msgs[3]))
+#for g in group_list:
+#	fuzz.tcp_fuzz(fuzz.mutate(g.msgs[0]))
 #for m in msgs:
-#fuzz.tcp_fuzz([m for m in msgs if m.file == 0])
+#fuzz.tcp_fuzz([m.req for m in msgs if m.file == 0])
 
 trace = []
 for i in range(msgs[-1].file + 1):
 	trace.append([m.group.index for m in msgs if m.file == i])
 tree_root, end, s_list = state.construct(trace)
+pdb.set_trace()
 #fuzz.start(tree_root, end, s_list, msgs)
 
 

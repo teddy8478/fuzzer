@@ -15,7 +15,8 @@ def tcp_fuzz(msgs):
 		#print(cnt)
 		cnt += 1
 		data = ''
-		s.send(m.req.encode())
+		m = http(m)
+		s.send(m.encode())
 		#print(m.req)			
 		while True:			
 			seg = s.recv(1024)			
@@ -27,6 +28,19 @@ def tcp_fuzz(msgs):
 		s.close()
 
 	return data
+
+def http(m):
+	field = m.split(b"\r\n")
+	content_len = len(field[-1])
+	
+	for i in range(len(field)):
+		if field[i].startswith('Content-Length'):
+			field[i] = field[i][0:15]
+			field[i] += str(content_len).encode()			
+			break
+	m = b'\r\n'.join(field)
+	
+	return m
 
 def mutate(msg):
 	g = msg.group

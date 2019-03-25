@@ -84,16 +84,16 @@ class group:
 						
 	
 	def __repr__(self):
-		re = 'Group: ' + str(self.index) + '\n'
+		re = b'Group: ' + str(self.index).encode() + b'\n'
 		#re += 'Keys: ' + str(self.keys) + '\nFields' + str(self.fields) + '\n'
 		l = len(self.keys)
-		deli = self.deli_order + ['']
+		deli = self.deli_order + [b'']
 		for i in range(l):
 			if self.fields[i] == None:
-				re += str(self.keys[i]) 
+				re += str(self.keys[i]).encode() 
 			else:
-				re += str(self.fields[i])
-			re += deli[i]
-		return re
+				re += str(self.fields[i]).encode()
+			re += chr(deli[i]).encode()
+		return bytes.decode(re)
 		
 
