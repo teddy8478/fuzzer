@@ -1,5 +1,21 @@
 import pdb
+import re
 from collections import Counter
+
+def rm_cyc(trace):
+	ret = []
+	for t in trace:
+		s = str(t)[1:-1].replace(',', '')	
+		regex = re.compile(r'(.+)( \1)+')
+		while True:
+			match = regex.search(s)
+			if not hasattr(match, 'group'):
+				final = s.split(' ')
+				ret.append(list(map(int,final)))
+				break
+			s = s.replace(match.group(0), match.group(1))
+	return ret
+		
 
 def construct(traces):	#construct FSM tree
 	root = state(0, None)
@@ -81,8 +97,6 @@ def construct(traces):	#construct FSM tree
 	#print(end)
 	return root, end, state_list
 		
-
-
 def same_state(s1, s2):
 	if s1.trans.keys() != s2.trans.keys():
 		return False

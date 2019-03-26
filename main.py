@@ -23,18 +23,16 @@ for i in range(len(group_list)):
 group_order = [m.group.index for m in msgs]
 #print(group_list)
 #print(msgs[-1].parts)
-pdb.set_trace()
 
 #for g in group_list:
-fuzz.tcp_fuzz(fuzz.mutate(g.msgs[0]))
-#for m in msgs:
-#fuzz.tcp_fuzz([m.req for m in msgs if m.file == 0])
+#fuzz.tcp_fuzz(fuzz.mutate(g.msgs[0]))
 
 trace = []
 for i in range(msgs[-1].file + 1):
 	trace.append([m.group.index for m in msgs if m.file == i])
-tree_root, end, s_list = state.construct(trace)
+trace = state.rm_cyc(trace)
 pdb.set_trace()
+tree_root, end, s_list = state.construct(trace)
 #fuzz.start(tree_root, end, s_list, msgs)
 
 
