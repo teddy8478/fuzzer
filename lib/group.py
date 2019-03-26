@@ -18,7 +18,7 @@ def divide(msgs, index, pre_key):
 	cur_index = index
 	uni_msg = []
 	for m in msgs:
-		if m.req in [u.req for u in uni_msg] and len(pre_key) > 0:
+		if m.req in [u.req for u in uni_msg]:
 			continue
 		else:
 			uni_msg.append(m)
@@ -29,7 +29,7 @@ def divide(msgs, index, pre_key):
 		cnt = Counter([m.parts[cur_index] for m in uni_msg])
 		key_set = cnt.keys()
 		cv = list(cnt.values())
-		if Counter(cv)[1] / len(uni_msg) <= 0.5:
+		if Counter(cv)[1] / len(uni_msg) <= 0.4:
 			break
 		else:
 			cur_index += 1
