@@ -6,25 +6,25 @@ import time
 
 def tcp_fuzz(msgs):
 	host = '192.168.200.5'
-	port = 49153
-	
-	cnt = 1
+	port = 49154
 	for m in msgs:
 		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		s.connect((host, port))
-		#print(cnt)
-		cnt += 1
+		s.connect((host, port))		
+		s.settimeout(10)
 		data = ''
 		m = http(m)
-		s.send(m.encode())
-		#print(m.req)			
-		while True:			
-			seg = s.recv(1024)			
-			if not seg:
-				break
-			else:
-				data += seg.decode("utf-8")				
-		#print('Received', repr(data))
+		#print(m)
+		try:
+			s.send(m)					
+			while True:			
+				seg = s.recv(1024)			
+				if not seg:
+					break
+				else:
+					data += seg.decode("utf-8")	
+		except Exception as e: 
+			print(e)
+			print('msg: ' + str(m))
 		s.close()
 
 	return data
@@ -34,7 +34,7 @@ def http(m):
 	content_len = len(field[-1])
 	
 	for i in range(len(field)):
-		if field[i].startswith('Content-Length'):
+		if field[i].startswith(b'Content-Length'):
 			field[i] = field[i][0:15]
 			field[i] += str(content_len).encode()			
 			break
@@ -50,19 +50,19 @@ def mutate(msg):
 	orig = [m for m in g.msgs if m.index == index][0]
 	#pdb.set_trace()
 	part = orig.parts
-	deli = g.deli_order + ['']
+	deli = g.deli_order + [32]
 	if set(g.fields) == {None}:
 		return [orig.req]
 	#read patterns
-	with open("ptn/int", "r") as f:
+	with open("ptn/int", "r", encoding="utf-8") as f:
 	    int_ptn = []
 	    for line in f:
 	        int_ptn.append(line[:-1])
-	with open("ptn/float", "r") as f:
+	with open("ptn/float", "r", encoding="utf-8") as f:
 	    float_ptn = []
 	    for line in f:
 	        float_ptn.append(line[:-1])
-	with open("ptn/string", "r") as f:
+	with open("ptn/string", "r", encoding="utf-8") as f:
 	    string_ptn = []
 	    for line in f:
 	        string_ptn.append(line[:-1])
@@ -78,12 +78,12 @@ def mutate(msg):
 		elif g.fields[cur] == 'string':
 			ptn = string_ptn
 		for p in ptn:
-			flow = ''
+			flow = b''
 			for i in range(len(part)):
 				if i == cur:
-					flow += p + deli[i]
+					flow += p.encode() + chr(deli[i]).encode()
 				else:
-					flow += part[i] + deli[i]
+					flow += part[i] + chr(deli[i]).encode()
 			fuzz_list.append(flow)
 
 	return fuzz_list

