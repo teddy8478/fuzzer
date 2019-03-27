@@ -23,7 +23,7 @@ for i in range(len(group_list)):
 group_order = [m.group.index for m in msgs]
 print(group_list)
 #print(msgs[-1].parts)
-
+pdb.set_trace()
 #for g in group_list:
 fuzz.tcp_fuzz(fuzz.mutate(msgs[8]))
 

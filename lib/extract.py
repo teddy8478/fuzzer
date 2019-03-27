@@ -72,38 +72,26 @@ class msg:
 		self.keys = []
 		self.deli_order = req
 		
-		symbols = b' |:|/|&|=|\r|\n|,|\?|\"|<|>|#|[|]'
-		splits = re.split(symbols, req)
-		deli = req
-		for s in splits:
-			deli = deli.replace(s, b'', 1)
-		th = 3.5	#entropy threshold
-		i = 0
-		while i < len(splits):
-			if entropy(splits[i]) >= th:
-				self.parts.append(splits[i])
-				while True:
-					if entropy(splits[i+1]) >= th:
-						self.parts[-1] += chr(deli[i]).encode() + splits[i+1]
-						i += 2
-					elif entropy(splits[i+2]) >= th:
-						self.parts[-1] += chr(deli[i]).encode() + splits[i+1] + chr(deli[i+1]).encode() + splits[i+2]
-						i += 3
-					elif entropy(splits[i+3]) >= th:
-						self.parts[-1] += chr(deli[i]).encode() + splits[i+1] + chr(deli[i+1]).encode() + splits[i+2]+ chr(deli[i+2]).encode() + splits[i+3]
-						i += 4
-					else:
-						#pdb.set_trace()
-						i += 1			
-						break
+		first_sym = b' |\r|\n'
+		symbols = b' |:|/|&|=|\r|\n|,|\?|\"|<|>|#|\[|\]|\+'
+		non_base64 = b' |:|&|=|\r|\n|,|\?|\"|<|>|#|\[|\]'
+		seg = re.split(first_sym, req)
+		for s in seg:
+			if len(s) > 100:
+				splits = re.split(symbols, s)
+				deli = s
+				for sp in splits:
+					deli = deli.replace(sp, b'', 1)
+				match = re.findall(r'[\/|\+]+', deli.decode('utf-8'))
+				if len(max(match)) / len(deli) > 0.7:
+					self.parts += re.split(non_base64, s)
+				else:
+					self.parts += re.split(symbols, s)
 			else:
-				self.parts.append(splits[i])
-				i += 1
+				self.parts += re.split(symbols, s)
 
 		for s in self.parts:
 			self.deli_order = self.deli_order.replace(s, b'', 1)
-
-		
 
 	def __repr__(self):
 		re = 'File ' + str(self.file) + '\nRequest:' + str(self.req) + '\n'
