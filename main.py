@@ -23,9 +23,9 @@ for i in range(len(group_list)):
 group_order = [m.group.index for m in msgs]
 print(group_list)
 #print(msgs[-1].parts)
-pdb.set_trace()
+print('start fuzzing...')
 #for g in group_list:
-fuzz.tcp_fuzz(fuzz.mutate(msgs[8]))
+#fuzz.tcp_fuzz(fuzz.mutate(msgs[8]))
 
 trace = []
 for i in range(msgs[-1].file + 1):

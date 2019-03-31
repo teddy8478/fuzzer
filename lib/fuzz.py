@@ -5,16 +5,18 @@ import pdb
 import time
 
 def tcp_fuzz(msgs):
-	host = '192.168.200.5'
+	host = '192.168.200.5'	
+	cnt = 0
+	report = []
 	port = 49154
-	for m in msgs:
+	for m in msgs[cnt:]:
+				
 		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		s.connect((host, port))		
-		s.settimeout(10)
-		data = ''
-		m = http(m)
-		#print(m)
 		try:
+			s.connect((host, port))		
+			s.settimeout(5)
+			data = ''
+			m = http(m)		
 			s.send(m)					
 			while True:			
 				seg = s.recv(1024)			
@@ -22,11 +24,32 @@ def tcp_fuzz(msgs):
 					break
 				else:
 					data += seg.decode("utf-8")	
+			cnt += 1
+			s.close()
 		except Exception as e: 
 			print(e)
+			print(cnt)
 			print('msg: ' + str(m))
-		s.close()
-
+			err = {}
+			err['error'] =  e
+			err['msg'] = m
+			report.append(err)
+			s.close()			
+			open_p = []
+			pre_p = port
+			time.sleep(5)
+			for p in range(49153, 49157):
+				s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+				if s.connect_ex((host, p)) == 0:
+					open_p.append(p)
+			print(open_p)
+			for p in open_p:
+				if p != pre_p:
+					port = p
+					print('using port: ' + str(port))
+					break
+			#pdb.set_trace()		
+	print(report)
 	return data
 
 def http(m):
