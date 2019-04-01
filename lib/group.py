@@ -1,5 +1,6 @@
 import lib.extract
 from collections import Counter
+import math
 import pdb
 
 def divide(msgs, index, pre_key):
@@ -29,18 +30,34 @@ def divide(msgs, index, pre_key):
 		cnt = Counter([m.parts[cur_index] for m in uni_msg])
 		key_set = cnt.keys()
 		cv = list(cnt.values())
-		if Counter(cv)[1] / len(uni_msg) <= 0.5:
-			break
+		if Counter(cv)[1] / len(uni_msg) < 0.5:
+		#if entropy([m.parts[cur_index] for m in uni_msg]) < 2.5:
+			if msgs[0].parts[cur_index - 2] == b'Content-Length':	#for HTTP
+				cur_index += 1
+			else:	
+				break
 		else:
 			cur_index += 1
 	if cur_index == len(msgs[0].parts):	#in the end of msg
 		return [group(pre_key, msgs)]
 
+	#if len(key_set) > 1:
+	#	pdb.set_trace()
+		
 	for key in key_set:
 		subset = [msg for msg in msgs if msg.parts[cur_index] == key]
 		groups += divide(subset, cur_index + 1, pre_key + [cur_index])
 	
 	return groups
+
+def entropy(input_l):
+	en = 0.0
+	input_set = set(list(input_l))
+	for s in input_set:
+		freq = input_l.count(s) / len(input_l)
+		en += freq * math.log(freq, 2)
+	return -en
+
 
 def data_type(s):
 	if s == '':
@@ -84,7 +101,7 @@ class group:
 						
 	
 	def __repr__(self):
-		re = b'Group: ' + str(self.index).encode() + b'\n' + b'member: ' + str(self.member).encode() + b'\n'
+		re = b'\nGroup: ' + str(self.index).encode() + b'\n' + b'member: ' + str(self.member).encode() + b'\n'
 		#re += 'Keys: ' + str(self.keys) + '\nFields' + str(self.fields) + '\n'
 		l = len(self.keys)
 		deli = self.deli_order + [32]

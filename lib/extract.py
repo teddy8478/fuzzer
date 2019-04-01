@@ -52,14 +52,6 @@ def read_pcap_test(f):
 
 	return ret
 
-def entropy(input_s):
-	en = 0.0
-	input_set = set(list(input_s))
-	for s in input_set:
-		freq = input_s.count(s) / len(input_s)
-		en += freq * math.log(freq, 2)
-	return -en
-
 class msg:
 	def __init__(self, index, req, resp, f):
 		self.index = index
@@ -73,7 +65,7 @@ class msg:
 		self.deli_order = req
 		
 		first_sym = b' |\r|\n'
-		symbols = b' |:|/|&|=|\r|\n|,|\?|\"|<|>|#|\[|\]|\+'
+		symbols = b' |:|/|&|=|\r|\n|,|\?|\"|<|>|#|\[|\]'
 		non_base64 = b' |:|&|=|\r|\n|,|\?|\"|<|>|#|\[|\]'
 		seg = re.split(first_sym, req)
 		for s in seg:
