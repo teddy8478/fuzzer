@@ -5,6 +5,8 @@ import time
 
 import pdb
 
+ip = '192.168.200.5'
+port = 49153
 msgs = extract.read_pyshark('log/plug')
 #msgs = extract.read_pcap_test('../pulsar/example.pcap')
 group_list = []
@@ -22,10 +24,9 @@ for i in range(len(group_list)):
 		msgs[m].group = group_list[i]
 group_order = [m.group.index for m in msgs]
 print(group_list)
-#print(msgs[-1].parts)
 print('start fuzzing...')
-#for g in group_list:
-#fuzz.tcp_fuzz(fuzz.mutate(msgs[8]))
+for g in group_list:
+	fuzz.tcp_fuzz(fuzz.mutate(msgs[8]), ip, port)
 
 trace = []
 for i in range(msgs[-1].file + 1):

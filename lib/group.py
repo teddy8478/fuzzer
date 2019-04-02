@@ -30,8 +30,8 @@ def divide(msgs, index, pre_key):
 		cnt = Counter([m.parts[cur_index] for m in uni_msg])
 		key_set = cnt.keys()
 		cv = list(cnt.values())
-		if Counter(cv)[1] / len(uni_msg) < 0.5:
-		#if entropy([m.parts[cur_index] for m in uni_msg]) < 2.5:
+		#if Counter(cv)[1] / len(uni_msg) < 0.5:
+		if entropy([m.parts[cur_index] for m in msgs]) < 1.5:
 			if msgs[0].parts[cur_index - 2] == b'Content-Length':	#for HTTP
 				cur_index += 1
 			else:	

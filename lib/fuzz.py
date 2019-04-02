@@ -4,11 +4,11 @@ import os
 import pdb
 import time
 
-def tcp_fuzz(msgs):
-	host = '192.168.200.5'	
+def tcp_fuzz(msgs, host, port):
+	#host = '192.168.200.5'	
 	cnt = 0
 	report = []
-	port = 49154
+	#port = 49154
 	for m in msgs[cnt:]:
 				
 		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
