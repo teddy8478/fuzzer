@@ -7,6 +7,8 @@ import pyshark
 import collections
 import binascii
 
+
+
 def read_pyshark(floder):
 	ret = []
 	index = 0
@@ -33,6 +35,12 @@ def read_pyshark(floder):
 					req += binascii.a2b_hex(raw)	
 				else:
 					resp += binascii.a2b_hex(raw)
+			'''
+			req = decrypt(req)
+			resp = decrypt(resp)
+			pdb.set_trace()
+			'''
+			
 			ret.append(msg(index, req, resp, f_num))
 			index += 1
 		f_num += 1
@@ -52,39 +60,52 @@ def read_pcap_test(f):
 
 	return ret
 
+def decrypt(string):	#tplink hs110
+	key = 171
+	result = ""
+	for i in string[4:]:
+		a = key ^ i
+		key = i
+		result += chr(a)
+	return result.encode()
+
 class msg:
 	def __init__(self, index, req, resp, f):
 		self.index = index
 		self.req = req
 		self.resp = resp
-		self.file = f
-		self.parts = []
-		self.resp_parts = []
+		self.file = f		
 		self.group = -1
 		self.keys = []
-		self.deli_order = req
+		self.parts, self.deli_order = parse(req)
+		self.resp_parts, self.resp_deli = parse(resp)
 		
-		first_sym = b' |\r|\n'
-		symbols = b' |:|/|&|=|\r|\n|,|\?|\"|<|>|#|\[|\]'
-		non_base64 = b' |:|&|=|\r|\n|,|\?|\"|<|>|#|\[|\]'
-		seg = re.split(first_sym, req)
-		for s in seg:
-			if len(s) > 100:
-				splits = re.split(symbols, s)
-				deli = s
-				for sp in splits:
-					deli = deli.replace(sp, b'', 1)
-				match = re.findall(r'[\/|\+]+', deli.decode('utf-8'))
-				if len(max(match)) / len(deli) > 0.7:
-					self.parts += re.split(non_base64, s)
-				else:
-					self.parts += re.split(symbols, s)
-			else:
-				self.parts += re.split(symbols, s)
-
-		for s in self.parts:
-			self.deli_order = self.deli_order.replace(s, b'', 1)
 
 	def __repr__(self):
 		re = 'File ' + str(self.file) + '\nRequest:' + str(self.req) + '\n'
 		return re
+
+def parse(raw):
+	parts = []
+	first_sym = b' |\r|\n'
+	symbols = b' |:|/|&|=|\r|\n|,|\?|\"|<|>|#|\[|\]'
+	non_base64 = b' |:|&|=|\r|\n|,|\?|\"|<|>|#|\[|\]'
+	deli_order = raw
+	seg = re.split(first_sym, raw)
+	for s in seg:
+		if len(s) > 100:
+			splits = re.split(symbols, s)
+			deli = s
+			for sp in splits:
+				deli = deli.replace(sp, b'', 1)
+			match = re.findall(r'[\/|\+]+', deli.decode('utf-8'))
+			if len(match) == 0 or len(max(match)) / len(deli) > 0.7:
+				parts += re.split(non_base64, s)
+			else:
+				parts += re.split(symbols, s)
+		else:
+			parts += re.split(symbols, s)
+	for s in parts:
+		deli_order = deli_order.replace(s, b'', 1)
+
+	return parts, deli_order

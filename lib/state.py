@@ -2,8 +2,12 @@ import pdb
 import re
 from collections import Counter
 
-def rm_cyc(trace):
+def rm_cyc(msgs):
 	ret = []
+	trace = []
+	for i in range(msgs[-1].file + 1):
+		trace.append([m.group.index for m in msgs if m.file == i])
+	reduced = []
 	for t in trace:
 		s = str(t)[1:-1].replace(',', '')	
 		regex = re.compile(r'(.+)( \1)+')
@@ -11,9 +15,11 @@ def rm_cyc(trace):
 			match = regex.search(s)
 			if not hasattr(match, 'group'):
 				final = s.split(' ')
-				ret.append(list(map(int,final)))
+				reduced.append(list(map(int,final)))
 				break
-			s = s.replace(match.group(0), match.group(1))
+			pdb.set_trace()			
+			s = s.replace(match.group(0), match.group(1))		
+		
 	return ret
 		
 

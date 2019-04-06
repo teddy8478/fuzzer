@@ -3,20 +3,55 @@ import re
 import os
 import pdb
 import time
+import lib.extract
+import lib.state
 
-def tcp_fuzz(msgs, host, port):
-	#host = '192.168.200.5'	
-	cnt = 0
+
+def tcp_fuzz(msgs, conn):
+	host = conn[0]	
+	port = conn[1]
+	msg_num = len(msgs)
+	open_p = []
+	pre_p = port
+	time.sleep(1)
+	for p in range(49153, 49157):	#port scanning
+		c = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		if c.connect_ex((host, p)) == 0:
+			open_p.append(p)
+		c.close()
+
+	port = open_p[0]
 	report = []
-	#port = 49154
-	for m in msgs[cnt:]:
+	i = 0
+	while i < msg_num:	
+		while True:
+			try:
+				s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+				s.connect((host, port))
+				#print('current port: ' + str(port))
+				break
+			except Exception as e:
+				s.close()
+				print(e)
+				open_p = []
+				pre_p = port
+				time.sleep(1)
+				for p in range(49153, 49157):	#port scanning
+					c = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+					if c.connect_ex((host, p)) == 0:
+						open_p.append(p)
+				c.close()
+				print(open_p)				
+				if port == open_p[0]:
+					port = open_p[-1]
+				else:
+					port = open_p[0]
+				print('using port: ' + str(port))
 				
-		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		try:
-			s.connect((host, port))		
-			s.settimeout(5)
+		try:					
+			s.settimeout(3)
 			data = ''
-			m = http(m)		
+			m = http(msgs[i])		
 			s.send(m)					
 			while True:			
 				seg = s.recv(1024)			
@@ -24,30 +59,38 @@ def tcp_fuzz(msgs, host, port):
 					break
 				else:
 					data += seg.decode("utf-8")	
-			cnt += 1
-			s.close()
+			i += 1					
 		except Exception as e: 
 			print(e)
-			print(cnt)
-			print('msg: ' + str(m))
-			err = {}
-			err['error'] =  e
-			err['msg'] = m
-			report.append(err)
-			s.close()			
-			open_p = []
-			pre_p = port
-			time.sleep(5)
-			for p in range(49153, 49157):
-				s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-				if s.connect_ex((host, p)) == 0:
-					open_p.append(p)
-			print(open_p)
-			for p in open_p:
-				if p != pre_p:
-					port = p
-					print('using port: ' + str(port))
-					break
+			#print(cnt)
+			#pdb.set_trace()
+			if len(open_p) == 1:
+				open_p = []
+				for p in range(49153, 49157):	#port scanning
+					c = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+					if c.connect_ex((host, p)) == 0:
+						open_p.append(p)
+				c.close()
+				port = open_p[0]
+
+			if port == open_p[0]:				
+				port = open_p[-1]
+			else:
+				print('msg: ' + str(m))
+				err = {}
+				err['error'] =  e
+				err['msg'] = m
+				report.append(err)
+				i += 1
+
+				open_p = []
+				for p in range(49153, 49157):	#port scanning
+					c = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+					if c.connect_ex((host, p)) == 0:
+						open_p.append(p)
+				c.close()
+				port = open_p[0]
+		s.close()				
 			#pdb.set_trace()		
 	print(report)
 	return data
@@ -111,7 +154,7 @@ def mutate(msg):
 
 	return fuzz_list
 
-def start(root, end, s_list, msgs):
+def start(root, end, s_list, msgs, conn):
 	trace = []
 	for i in range(msgs[-1].file + 1):
 		trace.append([m for m in msgs if m.file == i])
@@ -124,17 +167,29 @@ def start(root, end, s_list, msgs):
 			g = m.group.index
 			if cur.fuzzed:
 				print('Replay group ' + str(m.group.index))
-				#tcp_fuzz(m)
+				tcp_fuzz(m, conn)
 				cur = cur.trans[g]
 				continue
 			fuzz_msg = mutate(m)
 			print('Fuzzing state ' + str(cur.index) + ', group ' + str(g))
-			'''
-			for f in fuzz_msg:
-				resp = tcp_fuzz(f)
-			'''
+			
+			for f in fuzz_msg:			
+				resp = tcp_fuzz(f, conn)
+				parts, deli = extract.parse(resp)
+
+
 			cur.fuzzed = True
 			cur = cur.trans[g]
 			if cur.index == 1:
 				break
 		print('Restart the device\n')	
+
+def encrypt(string):
+	key = 171
+	result = pack('>I', len(string))
+	for i in string:
+		a = key ^ ord(i)
+		key = a
+		result += chr(a)
+	return result
+
