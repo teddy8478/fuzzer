@@ -31,13 +31,12 @@ print('start fuzzing...')
 #fuzz.tcp_fuzz([msgs[21].req], conn)
 
 #fuzz.tcp_fuzz(fuzz.mutate(msgs[6]), conn)
-
-trace = []
-for i in range(msgs[-1].file + 1):
-	trace.append([m.group.index for m in msgs if m.file == i])
-trace = state.rm_cyc(msgs)
 pdb.set_trace()
+trace = []
+#for i in range(msgs[-1].file + 1):
+#	trace.append([m.group.index for m in msgs if m.file == i])
+trace = state.rm_cyc(msgs)
 tree_root, end, s_list = state.construct(trace)
-#fuzz.start(tree_root, end, s_list, msgs, conn)
+fuzz.start(tree_root, end, s_list, trace, conn)
 
 

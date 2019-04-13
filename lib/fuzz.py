@@ -3,8 +3,8 @@ import re
 import os
 import pdb
 import time
-import lib.extract
-import lib.state
+import lib.extract as extract
+import lib.state as state
 
 
 def tcp_fuzz(msgs, conn):
@@ -154,10 +154,7 @@ def mutate(msg):
 
 	return fuzz_list
 
-def start(root, end, s_list, msgs, conn):
-	trace = []
-	for i in range(msgs[-1].file + 1):
-		trace.append([m for m in msgs if m.file == i])
+def start(root, end, s_list, trace, conn):
 	
 	for e in end:
 		cur = root
@@ -165,26 +162,25 @@ def start(root, end, s_list, msgs, conn):
 		print('Trace ' + str([m.group.index for m in trace[cur_tr]]))
 		for m in trace[cur_tr]:	
 			g = m.group.index
-			if cur.fuzzed:
+			if g not in cur.remain:
 				print('Replay group ' + str(m.group.index))
-				tcp_fuzz(m, conn)
+				#tcp_fuzz(m, conn)
 				cur = cur.trans[g]
 				continue
 			fuzz_msg = mutate(m)
 			print('Fuzzing state ' + str(cur.index) + ', group ' + str(g))
-			
+			resp = b''			
 			for f in fuzz_msg:			
-				resp = tcp_fuzz(f, conn)
+				#resp = tcp_fuzz(f, conn)
 				parts, deli = extract.parse(resp)
 
-
-			cur.fuzzed = True
+			cur.remain.remove(g)
 			cur = cur.trans[g]
 			if cur.index == 1:
 				break
 		print('Restart the device\n')	
 
-def encrypt(string):
+def encrypt(string):	#tplink
 	key = 171
 	result = pack('>I', len(string))
 	for i in string:

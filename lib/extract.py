@@ -24,23 +24,35 @@ def read_pyshark(floder):
 			else:
 				s_dict[int(c.tcp.stream)] = [c]
 		s_dict = collections.OrderedDict(sorted(s_dict.items()))
-		
-		for num, packets in s_dict.items():
-			src = packets[0].ip.src
+		msgs = []
+		for num, packets in s_dict.items():	#for each stream
+			if hasattr(packets[0], 'ip'):
+				src = packets[0].ip.src
+			elif hasattr(packets[0], 'ipv6'):
+				src = packets[0].ipv6.src
 			req = b''
 			resp = b''
+			cur_ip = src
 			for packet in packets:
+				if not hasattr(packet.tcp, 'payload'):
+					continue
 				raw = str(packet.tcp.payload).replace(':', '')
-				if packet.ip.src == src:
-					req += binascii.a2b_hex(raw)	
-				else:
-					resp += binascii.a2b_hex(raw)
+				if hasattr(packet, 'ip'):
+					if packet.ip.src == src:
+						req += binascii.a2b_hex(raw)	
+					else:
+						resp += binascii.a2b_hex(raw)
+				elif hasattr(packet, 'ipv6'):
+					if packet.ipv6.src == src:
+						req += binascii.a2b_hex(raw)	
+					else:
+						resp += binascii.a2b_hex(raw)
+
 			'''
 			req = decrypt(req)
 			resp = decrypt(resp)
 			pdb.set_trace()
 			'''
-			
 			ret.append(msg(index, req, resp, f_num))
 			index += 1
 		f_num += 1

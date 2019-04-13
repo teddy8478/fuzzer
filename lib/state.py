@@ -10,16 +10,27 @@ def rm_cyc(msgs):
 	reduced = []
 	for t in trace:
 		s = str(t)[1:-1].replace(',', '')	
-		regex = re.compile(r'(.+)( \1)+')
+		regex = re.compile(r' (.+)( \1)+ ')
 		while True:
 			match = regex.search(s)
 			if not hasattr(match, 'group'):
 				final = s.split(' ')
 				reduced.append(list(map(int,final)))
 				break
-			pdb.set_trace()			
-			s = s.replace(match.group(0), match.group(1))		
-		
+			s = s.replace(match.group(0), ' ' + match.group(1) + ' ')		
+				
+	tr_msg = []
+	for i in range(msgs[-1].file + 1):
+		tr_msg.append([m for m in msgs if m.file == i])
+	for i in range(len(reduced)):
+		ret.append([])
+		for j in range(len(tr_msg[i])):
+			if len(reduced[i]) == 0:
+				break
+			if tr_msg[i][j].group.index == reduced[i][0]:
+				ret[-1].append(tr_msg[i][j])
+				reduced[i].pop(0)
+		print([m.group.index for m in ret[-1]])
 	return ret
 		
 
@@ -34,6 +45,7 @@ def construct(traces):	#construct FSM tree
 	end = set()
 	tr = 0
 	for trace in traces:
+		trace = [m.group.index for m in trace]
 		cur = root
 		for i in range(len(trace)-1):
 			if trace[i] in cur.trans.keys():
@@ -121,7 +133,7 @@ class state:
 		self.postfix = set()
 		self.trace = []
 		self.leaf = False
-		self.fuzzed = False
+		self.remain = []
 		if index == 0:
 			self.lv = 0
 		elif index == 1:
@@ -143,3 +155,4 @@ class state:
 
 	def add_child(self, act, s):
 		self.trans[act] = s
+		self.remain.append(act)
