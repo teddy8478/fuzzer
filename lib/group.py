@@ -3,7 +3,7 @@ from collections import Counter
 import math
 import pdb
 
-def divide(msgs, index, pre_key):
+def divide(msgs, index, pre_key, entr):
 	msg_cnt = len(msgs)
 	groups = []
 	key = []
@@ -31,7 +31,7 @@ def divide(msgs, index, pre_key):
 		key_set = cnt.keys()
 		cv = list(cnt.values())
 		#if Counter(cv)[1] / len(uni_msg) < 0.5:
-		if entropy([m.parts[cur_index] for m in msgs]) < 1.75:
+		if entropy([m.parts[cur_index] for m in msgs]) < entr:
 			if msgs[0].parts[cur_index - 2] == b'Content-Length':	#for HTTP
 				cur_index += 1
 			else:	
@@ -46,7 +46,7 @@ def divide(msgs, index, pre_key):
 		
 	for key in key_set:
 		subset = [msg for msg in msgs if msg.parts[cur_index] == key]
-		groups += divide(subset, cur_index + 1, pre_key + [cur_index])
+		groups += divide(subset, cur_index + 1, pre_key + [cur_index], entr)
 	
 	return groups
 

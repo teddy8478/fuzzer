@@ -48,11 +48,11 @@ def read_pyshark(floder):
 					else:
 						resp += binascii.a2b_hex(raw)
 
-			'''
+			
 			req = decrypt(req)
 			resp = decrypt(resp)
-			pdb.set_trace()
-			'''
+			#pdb.set_trace()
+			
 			ret.append(msg(index, req, resp, f_num))
 			index += 1
 		f_num += 1

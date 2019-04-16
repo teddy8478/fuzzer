@@ -30,7 +30,7 @@ def rm_cyc(msgs):
 			if tr_msg[i][j].group.index == reduced[i][0]:
 				ret[-1].append(tr_msg[i][j])
 				reduced[i].pop(0)
-		print([m.group.index for m in ret[-1]])
+		#print([m.group.index for m in ret[-1]])
 	return ret
 		
 
