@@ -38,7 +38,7 @@ def construct(traces):	#construct FSM tree
 	root = state(0, None)
 	final = state(1, None)
 	#build the tree
-	print(traces)
+	#print(traces)
 	sid = 2
 	state_list = [root, final]
 	leaf = []

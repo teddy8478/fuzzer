@@ -24,8 +24,9 @@ def find_rule(traces, g_num):
 				continue
 			if len(rules[i][j]) > 0:
 				for s in rules[i][j]:
-					ret[i].append((s[0], j, s[1]))
-					cnt += 1
+					if s[0] not in {r[0] for r in ret[i]}:	#one field one rule
+						ret[i].append((s[0], j, s[1]))
+						cnt += 1
 	return ret, cnt
 							
 def compare_field(m1, m2):
@@ -34,7 +35,7 @@ def compare_field(m1, m2):
 		for j in range(len(m2.resp_parts)):
 			if m1.group.fields[i] == None:
 				continue
-			if m1.parts[i] == m2.resp_parts[j] and group.entropy(m1.parts[i]) > 3:
+			if m1.parts[i] == m2.resp_parts[j] and group.entropy(m1.parts[i]) > 0.6:
 				#pdb.set_trace()
 				#print('%s %d %d'%(m1.parts[i], m1.group.index, m2.group.index))
 				ret.add((i, j))

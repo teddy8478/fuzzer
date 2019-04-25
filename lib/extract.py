@@ -47,10 +47,12 @@ def read_pyshark(floder):
 						req += binascii.a2b_hex(raw)	
 					else:
 						resp += binascii.a2b_hex(raw)
-
-			
-			req = decrypt(req)
-			resp = decrypt(resp)
+			#case by case
+			if floder == 'log/pulg':
+				pass
+			elif floder == 'log/tplink':
+				req = decrypt(req)
+				resp = decrypt(resp)
 			#pdb.set_trace()
 			
 			ret.append(msg(index, req, resp, f_num))
@@ -91,6 +93,7 @@ class msg:
 		self.keys = []
 		self.parts, self.deli_order = parse(req)
 		self.resp_parts, self.resp_deli = parse(resp)
+		self.all_seg = self.parts + self.resp_parts
 		
 
 	def __repr__(self):
@@ -100,8 +103,8 @@ class msg:
 def parse(raw):
 	parts = []
 	first_sym = b' |\r|\n'
-	symbols = b' |:|/|&|=|\r|\n|,|\?|\"|<|>|#|\[|\]'
-	non_base64 = b' |:|&|=|\r|\n|,|\?|\"|<|>|#|\[|\]'
+	symbols = b' |:|/|&|=|\r|\n|,|\?|\"|<|>|#|\[|\]|\{|\}'
+	non_base64 = b' |:|&|=|\r|\n|,|\?|\"|<|>|#|\[|\]|\{|\}'
 	deli_order = raw
 	seg = re.split(first_sym, raw)
 	for s in seg:

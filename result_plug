@@ -1,0 +1,346 @@
+0.200000 0
+0.300000 2
+0.400000 3
+0.500000 0
+clustering time: 12.322065 sec
+[0, 1, 2, 3, 4, 5, 6, 0, 6, 1, 0, 6, 2, 0, 2, 3, 4, 5, 1, 7, 2, 3, 4, 5, 1, 5, 2, 7, 1, 2, 7, 2, 3, 4, 5, 7, 8, 9, 10, 8, 9]
+[11, 1, 2, 3, 4, 5, 6, 11, 6, 1, 11, 2, 3, 4, 5, 7, 1, 7, 2, 1, 3, 4, 2, 5, 7, 8, 12, 13, 14, 8, 15, 8, 15]
+[0, 1, 2, 3, 4, 5, 6, 0, 6, 1, 0, 6, 2, 0, 2, 3, 4, 5, 7, 1, 7, 2, 3, 4, 5, 1, 7, 2, 7, 3, 2, 4, 5, 7, 8, 16, 10, 8, 16]
+[11, 1, 2, 3, 4, 17, 6, 11, 6, 1, 11, 6, 2, 11, 3, 4, 17, 7, 1, 7, 2, 3, 4, 17, 1, 17, 2, 7, 8, 12, 8, 15, 8, 15]
+[
+Group: 0
+member: [0, 9, 12, 15, 110, 119, 122, 125]
+GET /setup.xml HTTP/1.1
+Authorization: SDU 00d9bf591f2c4475:____=:____
+If-Modified-Since: Sat, 01 Jan 2000 00:00:54 GMT+00:00
+Content-Type: application/xml
+User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
+Host: 192.168.200.5:49153
+Connection: Keep-Alive
+Accept-Encoding: gzip
+
+ 
+Total value: 0	 Identified: 2
+, 
+Group: 1
+member: [1, 11, 21, 30, 34, 54, 65, 75, 85, 90, 111, 121, 132, 141, 144, 164, 174, 185, 195, 203]
+POST /upnp/control/insight1 HTTP/1.0
+Content-Type: text/xml; charset="utf-8"
+HOST: 192.168.200.5
+Content-Length: 290
+SOAPACTION: "urn:Belkin:service:insight:1#GetInsightParams"
+Connection: close
+
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+   <s:Body>
+      <u:GetInsightParams xmlns:u="urn:Belkin:service:insight:1"></u:GetInsightParams>
+   </s:Body>
+</s:Envelope>
+ 
+Total value: 3	 Identified: 0
+, 
+Group: 2
+member: [2, 3, 14, 16, 23, 26, 32, 35, 37, 39, 55, 56, 68, 69, 77, 79, 88, 89, 93, 95, 112, 113, 124, 126, 134, 136, 143, 146, 147, 150, 165, 166, 177, 178, 187, 189, 197, 199, 205, 207]
+POST /upnp/control/____ HTTP/1.0
+Content-Type: text/xml; charset="utf-8"
+HOST: 192.168.200.5
+Content-Length: ____
+SOAPACTION: "urn:Belkin:service:____:1#____"
+Connection: close
+
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+   <s:Body>
+      <u:____ xmlns:u="urn:Belkin:service:____:1"></u:____>
+   </s:Body>
+</s:Envelope>
+ 
+Total value: 3	 Identified: 7
+, 
+Group: 3
+member: [4, 17, 27, 40, 57, 70, 80, 91, 114, 127, 137, 149, 167, 180, 190, 200]
+POST /upnp/control/metainfo1 HTTP/1.0
+Content-Type: text/xml; charset="utf-8"
+HOST: 192.168.200.5
+Content-Length: 281
+SOAPACTION: "urn:Belkin:service:metainfo:1#GetMetaInfo"
+Connection: close
+
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+   <s:Body>
+      <u:GetMetaInfo xmlns:u="urn:Belkin:service:metainfo:1"></u:GetMetaInfo>
+   </s:Body>
+</s:Envelope>
+ 
+Total value: 3	 Identified: 0
+, 
+Group: 4
+member: [5, 18, 28, 41, 58, 71, 81, 92, 115, 128, 138, 151, 168, 181, 191, 201]
+POST /upnp/control/metainfo1 HTTP/1.0
+Content-Type: text/xml; charset="utf-8"
+HOST: 192.168.200.5
+Content-Length: 287
+SOAPACTION: "urn:Belkin:service:metainfo:1#GetExtMetaInfo"
+Connection: close
+
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+   <s:Body>
+      <u:GetExtMetaInfo xmlns:u="urn:Belkin:service:metainfo:1"></u:GetExtMetaInfo>
+   </s:Body>
+</s:Envelope>
+ 
+Total value: 3	 Identified: 0
+, 
+Group: 5
+member: [6, 7, 19, 20, 29, 31, 42, 43, 59, 60, 72, 73, 82, 83, 94, 96, 116, 117, 129, 130, 139, 140, 152, 153]
+POST /upnp/control/deviceinfo1 HTTP/1.0
+Content-Type: text/xml; charset="utf-8"
+HOST: 192.168.200.5
+Content-Length: ____
+SOAPACTION: "urn:Belkin:service:deviceinfo:1#GetInformation"
+Connection: close
+
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+   <s:Body>
+      <u:GetInformation xmlns:u="urn:Belkin:service:deviceinfo:1">
+         <UTC>____</UTC>
+         <TimeZone>____</TimeZone>
+         <dst>____</dst>
+         <DstSupported>____</DstSupported>
+      </u:GetInformation>
+   </s:Body>
+</s:Envelope>
+ 
+Total value: 7	 Identified: 5
+, 
+Group: 6
+member: [8, 10, 13, 61, 63, 64, 118, 120, 123, 171, 173, 176]
+SUBSCRIBE /upnp/event/____ HTTP/1.0
+Content-Length: ____
+HOST: 192.168.200.5
+CALLBACK: <http://192.168.200.4:8059/evetSub>
+NT: upnp:event
+TIMEOUT: infinite
+Connection: close
+
+ 
+Total value: 0	 Identified: 2
+, 
+Group: 7
+member: [22, 24, 25, 33, 36, 38, 44, 45, 46, 74, 76, 78, 84, 86, 87, 97, 98, 99, 131, 133, 135, 142, 145, 148, 154, 155, 156, 184, 186, 188, 194, 196, 198, 206, 208, 209]
+SUBSCRIBE /upnp/event/____ HTTP/1.0
+Content-Length: ____
+HOST: 192.168.200.5
+SID: uuid:____
+TIMEOUT: infinite
+Connection: close
+
+ 
+Total value: 0	 Identified: 3
+, 
+Group: 8
+member: [47, 48, 51, 100, 104, 106, 108, 157, 158, 161, 210, 212, 214]
+POST /upnp/control/rules1 HTTP/1.0
+Content-Type: text/xml; charset="utf-8"
+HOST: 192.168.200.5
+Content-Length: 276
+SOAPACTION: "urn:Belkin:service:rules:1#FetchRules"
+Connection: close
+
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+   <s:Body>
+      <u:FetchRules xmlns:u="urn:Belkin:service:rules:1"></u:FetchRules>
+   </s:Body>
+</s:Envelope>
+ 
+Total value: 3	 Identified: 0
+, 
+Group: 9
+member: [49, 52]
+POST /upnp/control/rules1 HTTP/1.0
+Content-Type: text/xml; charset="utf-8"
+HOST: 192.168.200.5
+Content-Length: ____
+SOAPACTION: "urn:Belkin:service:rules:1#StoreRules"
+Connection: close
+
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+   <s:Body>
+      <u:StoreRules xmlns:u="urn:Belkin:service:rules:1">
+         <ruleDbVersion>____</ruleDbVersion>
+         <processDb>1</processDb>
+         <ruleDbBody>&lt;![CDATA[____]]&gt;</ruleDbBody>
+      </u:StoreRules>
+   </s:Body>
+</s:Envelope>
+ 
+Total value: 6	 Identified: 3
+, 
+Group: 10
+member: [50, 160]
+POST /upnp/control/rules1 HTTP/1.0
+Content-Type: text/xml; charset="utf-8"
+HOST: 192.168.200.5
+Content-Length: ____
+SOAPACTION: "urn:Belkin:service:rules:1#DeleteRuleID"
+Connection: close
+
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+   <s:Body>
+      <u:DeleteRuleID xmlns:u="urn:Belkin:service:rules:1">
+         <RuleID>____</RuleID>
+      </u:DeleteRuleID>
+   </s:Body>
+</s:Envelope>
+ 
+Total value: 4	 Identified: 2
+, 
+Group: 11
+member: [53, 62, 66, 67, 163, 172, 175, 179]
+GET /setup.xml HTTP/1.1
+Authorization: SDU 00d9bf591f2c4475:____=:____
+If-Modified-Since: Mon, 18 Mar 2019 14:27:03 GMT+00:00
+Content-Type: application/xml
+User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
+Host: 192.168.200.5:49153
+Connection: Keep-Alive
+Accept-Encoding: gzip
+
+ 
+Total value: 0	 Identified: 2
+, 
+Group: 12
+member: [101, 211]
+GET /rules.db HTTP/1.1
+User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
+Host: 192.168.200.5:49153
+Connection: Keep-Alive
+Accept-Encoding: gzip
+
+ 
+Total value: 0	 Identified: 0
+, 
+Group: 13
+member: [102]
+POST /upnp/control/firmwareupdate1 HTTP/1.0
+Content-Type: text/xml; charset="utf-8"
+HOST: 192.168.200.5
+Content-Length: 301
+SOAPACTION: "urn:Belkin:service:firmwareupdate:1#GetFirmwareVersion"
+Connection: close
+
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+   <s:Body>
+      <u:GetFirmwareVersion xmlns:u="urn:Belkin:service:firmwareupdate:1"></u:GetFirmwareVersion>
+   </s:Body>
+</s:Envelope>
+ 
+Total value: 3	 Identified: 0
+, 
+Group: 14
+member: [103]
+POST /upnp/control/rules1 HTTP/1.0
+Content-Type: text/xml; charset="utf-8"
+HOST: 192.168.200.5
+Content-Length: 538
+SOAPACTION: "urn:Belkin:service:rules:1#SimulatedRuleData"
+Connection: close
+
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+   <s:Body>
+      <u:SimulatedRuleData xmlns:u="urn:Belkin:service:rules:1">
+         <DeviceList>
+&lt;SimulatedRuleData&gt;
+&lt;Device&gt;
+&lt;UDN&gt;uuid:Insight-1_0-231615K12001C0&lt;/UDN&gt;
+&lt;index&gt;0&lt;/index&gt;
+&lt;/Device&gt;
+&lt;/SimulatedRuleData&gt;</DeviceList>
+         <DeviceCount>1</DeviceCount>
+      </u:SimulatedRuleData>
+   </s:Body>
+</s:Envelope>
+ 
+Total value: 5	 Identified: 0
+, 
+Group: 15
+member: [105, 107, 109, 213, 215]
+POST /upnp/control/rules1 HTTP/1.0
+Content-Type: text/xml; charset="utf-8"
+HOST: 192.168.200.5
+Content-Length: ____
+SOAPACTION: "urn:Belkin:service:rules:1#StoreRules"
+Connection: close
+
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+   <s:Body>
+      <u:StoreRules xmlns:u="urn:Belkin:service:rules:1">
+         <ruleDbVersion>____</ruleDbVersion>
+         <processDb>1</processDb>
+         <ruleDbBody>&lt;![CDATA[UEsDBBQACAAIAFlpeU4AAAAAAAAAAADgAAASAAAAdGVtcHBsdWdpblJ1bGVzLmRi7d3Lb+NEHAdwT9Ntmr7cHpAPsNJIVdVE2+eWokUIsXm4ITSPkri7FA6Vm7gl2tRuHWeXLBJSisSRf4EbSNwRcFiJG38AQgghcecEh0Uc2APjceLYyRKngNCm+n5SJ56Zn8czHnsiK41SejNbtTR6bJinqkW3hHmBEOE2pYIgSGyZE7qm2DLeXrfzCVsiwmCSsDb/ZFb8RJgJfyWIn819I1qzkZkvp7+bvj11HnkceWOywgoAAABgKK3YTFhaXiYXC5Z6VNOUeDEtKyn5TiYpl3yJuWRRjisyVeKJrP3sKaJRRTVPNCul3a+WtfreLs3kFTktF+leMZOLFw/ornxA4/tKIZNnteTkvLJCi42alkl1IleoszHLUeS3FDepV7T3OjGxVnk6LG1ukotz3taSnC8VivmCktnJJONKppDvz5n1tbq/nEZLml43zLxhVY+rZdWqGvpQ7e9tPq+g+dTcdrU5rV5XT7R2/7wlqYbJX3lRrLU8xXvZavJeFvezcok3+SAnl0pxVm9fzoyvl/3lNDqwufZuKduA5vez2RXqbagne8fUzhuaXm664/F+JCwtLZHWy7yhiWwhuSun+N6969O+xnlLaHTPrJ6qZvOe1qRDHHNq2u2ttA9TdpLv/eIdvndWLR/QTH6n4F2f8u3dW0KjWeMSA07LVauZV087A1g2GrplenNqrDKrUXGThn7iTbc3SBpujqmddEd9PuwczDLvTrpY2N9rX17e9YivO94SGk2bRuPMuW6G6xHf4G+vwVhLnQhL6+udy83ZT7KQS2Ty/CD2ZUz6GtdXTKNO/Unj9KiqX+LI9568ziXrThVOcnBnOsmeqNjetQnpxg1ywHtYP6+xe5jDunOe9ybDvt71FEZ1dh6ssFTswxfHw9LiIvlo3b182yPkWZ3ou2DdUbQ7e5lBDJhH+w+L2vQdS0s1LaXKTuJOFm9AZ0byx8XLPJO1nc0Hsl7xpZ1h6NtSaZ51676j1hrdVFa7r9Xc1NuJpHqmHlXZcW3yvbV74M1n+3RyC3qOXUeF4+O6Zrk1sORTcpP2dVcxHui+XrKavOlYa3MsLEkSuYh3Z13+NN4/t7rTqXdc2JzamQo8kybvfU+evXHBrGhmz9FNqVZnZmCt66ZYoVtQauplt82x0IT0qkSEqv0u2T4h1YZl8PQhb+rhJn+5xt7pJ+23+7tkQlpdJc4ko+oV06hWDk81S62oltqbDvm63ltKozU2f9aclsXsm3jhHz4BAAAAAAAAwGiYZQsR/xDYHwAAAAAAAABcLWEyJj1891C5a9//C/OCID4SPwjaCAAAAAAAAABGk/2lfn7//6f4e1AsAAAAAAAAAIymzuf/c697H7M/TH/qfwTVAwAAAAAAzxDyW1DEMMjnQRFDIeWgiKGQF4IihvN9UMBwPg4KGE46KOB/QX4JivhPkYdBEQORV4IiBnsSFDDYo6CAwf7lf96/FhQwgH3/HxK/FcRfxZ/ZCwAAAAAAAAA8u54LhdZJ3y93jIljoaWI98dTRBJaJJ7frYi73///WjwP2gkAAAAAAAAAjKbO/T8AAAAAAAAAXF3O7//9KLA/AAAAAAAAABg1S2RSeH7h+vWFhbz2oGmY99KJ7ZfWbm5vbGysbq/dvLW1tZFOKLfw+T8AAAAAAADA1ed+//8n8YugWAAAAAAAAAAYTfj8HwAAAAAAAODqw/0/AAAAAAAAwNX3F1BLBwh6Vl/tBQUAAADgAABQSwECFAAUAAgACABZaXlOelZf7QUFAAAA4AAAEgAAAAAAAAAAAAAAAAAAAAAAdGVtcHBsdWdpblJ1bGVzLmRiUEsFBgAAAAABAAEAQAAAAEUFAAAAAA==]]&gt;</ruleDbBody>
+      </u:StoreRules>
+   </s:Body>
+</s:Envelope>
+ 
+Total value: 6	 Identified: 2
+, 
+Group: 16
+member: [159, 162]
+POST /upnp/control/rules1 HTTP/1.0
+Content-Type: text/xml; charset="utf-8"
+HOST: 192.168.200.5
+Content-Length: ____
+SOAPACTION: "urn:Belkin:service:rules:1#StoreRules"
+Connection: close
+
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+   <s:Body>
+      <u:StoreRules xmlns:u="urn:Belkin:service:rules:1">
+         <ruleDbVersion>____</ruleDbVersion>
+         <processDb>1</processDb>
+         <ruleDbBody>&lt;![CDATA[UEsDBBQACAAIAFlpeU4AAAAAAAAAAADgAAASAAAAdGVtcHBsdWdpblJ1bGVzLmRi7d3Lb+NEHAdwT9Ntmr7cHpAPsNJIVdVE2+eWokUIsXm4ITSPkri7FA6Vm7gl2tRuHWeXLBJSisSRf4EbSNwRcFiJG38AQgghcecEh0Uc2APjceLYyRKngNCm+n5SJ56Zn8czHnsiK41SejNbtTR6bJinqkW3hHmBEOE2pYIgSGyZE7qm2DLeXrfzCVsiwmCSsDb/ZFb8RJgJfyWIn819I1qzkZkvp7+bvj11HnkceWOywgoAAABgKK3YTFhaXiYXC5Z6VNOUeDEtKyn5TiYpl3yJuWRRjisyVeKJrP3sKaJRRTVPNCul3a+WtfreLs3kFTktF+leMZOLFw/ornxA4/tKIZNnteTkvLJCi42alkl1IleoszHLUeS3FDepV7T3OjGxVnk6LG1ukotz3taSnC8VivmCktnJJONKppDvz5n1tbq/nEZLml43zLxhVY+rZdWqGvpQ7e9tPq+g+dTcdrU5rV5XT7R2/7wlqYbJX3lRrLU8xXvZavJeFvezcok3+SAnl0pxVm9fzoyvl/3lNDqwufZuKduA5vez2RXqbagne8fUzhuaXm664/F+JCwtLZHWy7yhiWwhuSun+N6969O+xnlLaHTPrJ6qZvOe1qRDHHNq2u2ttA9TdpLv/eIdvndWLR/QTH6n4F2f8u3dW0KjWeMSA07LVauZV087A1g2GrplenNqrDKrUXGThn7iTbc3SBpujqmddEd9PuwczDLvTrpY2N9rX17e9YivO94SGk2bRuPMuW6G6xHf4G+vwVhLnQhL6+udy83ZT7KQS2Ty/CD2ZUz6GtdXTKNO/Unj9KiqX+LI9568ziXrThVOcnBnOsmeqNjetQnpxg1ywHtYP6+xe5jDunOe9ybDvt71FEZ1dh6ssFTswxfHw9LiIvlo3b182yPkWZ3ou2DdUbQ7e5lBDJhH+w+L2vQdS0s1LaXKTuJOFm9AZ0byx8XLPJO1nc0Hsl7xpZ1h6NtSaZ51676j1hrdVFa7r9Xc1NuJpHqmHlXZcW3yvbV74M1n+3RyC3qOXUeF4+O6Zrk1sORTcpP2dVcxHui+XrKavOlYa3MsLEkSuYh3Z13+NN4/t7rTqXdc2JzamQo8kybvfU+evXHBrGhmz9FNqVZnZmCt66ZYoVtQauplt82x0IT0qkSEqv0u2T4h1YZl8PQhb+rhJn+5xt7pJ+23+7tkQlpdJc4ko+oV06hWDk81S62oltqbDvm63ltKozU2f9aclsXsm3jhHz4BAAAAAAAAwGiYZQsR/xDYHwAAAAAAAABcLWEyJj1891C5a9//C/OCID4SPwjaCAAAAAAAAABGk/2lfn7//6f4e1AsAAAAAAAAAIymzuf/c697H7M/TH/qfwTVAwAAAAAAzxDyW1DEMMjnQRFDIeWgiKGQF4IihvN9UMBwPg4KGE46KOB/QX4JivhPkYdBEQORV4IiBnsSFDDYo6CAwf7lf96/FhQwgH3/HxK/FcRfxZ/ZCwAAAAAAAAA8u54LhdZJ3y93jIljoaWI98dTRBJaJJ7frYi73///WjwP2gkAAAAAAAAAjKbO/T8AAAAAAAAAXF3O7//9KLA/AAAAAAAAABg1S2RSeH7h+vWFhbz2oGmY99KJ7ZfWbm5vbGysbq/dvLW1tZFOKLfw+T8AAAAAAADA1ed+//8n8YugWAAAAAAAAAAYTfj8HwAAAAAAAODqw/0/AAAAAAAAwNX3F1BLBwh6Vl/tBQUAAADgAABQSwECFAAUAAgACABZaXlOelZf7QUFAAAA4AAAEgAAAAAAAAAAAAAAAAAAAAAAdGVtcHBsdWdpblJ1bGVzLmRiUEsFBgAAAAABAAEAQAAAAEUFAAAAAA==]]&gt;</ruleDbBody>
+      </u:StoreRules>
+   </s:Body>
+</s:Envelope>
+ 
+Total value: 6	 Identified: 2
+, 
+Group: 17
+member: [169, 170, 182, 183, 192, 193, 202, 204]
+POST /upnp/control/deviceinfo1 HTTP/1.0
+Content-Type: text/xml; charset="utf-8"
+HOST: 192.168.200.5
+Content-Length: ____
+SOAPACTION: "urn:Belkin:service:deviceinfo:1#GetInformation"
+Connection: close
+
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+   <s:Body>
+      <u:GetInformation xmlns:u="urn:Belkin:service:deviceinfo:1">
+         <UTC>____</UTC>
+         <TimeZone>____</TimeZone>
+         <dst>____</dst>
+         <DstSupported>____</DstSupported>
+      </u:GetInformation>
+   </s:Body>
+</s:Envelope>
+ 
+Total value: 7	 Identified: 5
+]
+[[], [], [(4, 11, 646), (31, 11, 594), (103, 11, 594)], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+Real group: 11	Identified: 9	Coverage: 0.818182
+> /home/andy/fuzzer/main.py(65)<module>()
+-> tree_root, end, s_list = state.construct(trace)
+(Pdb) 
