@@ -135,7 +135,10 @@ class group:
 		data = {}
 		req = self.msgs[0].req.decode()
 		data = lib.exp.to_dict(req)
-		v_cnt = dict_cnt(data)
+		if isinstance(data, dict):
+			v_cnt = dict_cnt(data)
+		else:
+			v_cnt = 0
 		self.v_cnt = v_cnt
 		f_cnt = len([f for f in self.fields if f != None])
 		#print('Total value: %d\t Identified: %d\n' % (v_cnt, f_cnt))

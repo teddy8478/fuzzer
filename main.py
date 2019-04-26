@@ -8,7 +8,7 @@ import pdb
 ip = '192.168.200.5'
 port = 49153
 conn = (ip, port)
-msgs = extract.read_pyshark('log/tplink')
+msgs = extract.read_pyshark('log/plug')
 #msgs = extract.read_pcap_test('../pulsar/example.pcap')
 tStart = time.time()
 entr = 0.1
