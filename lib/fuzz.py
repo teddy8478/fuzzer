@@ -204,8 +204,8 @@ def start(root, end, s_list, trace, conn):
 
 def encrypt(string):	#tplink
 	key = 171
-	result = b'\x00\x00\x00'
-	result += chr(len(string)).encode()
+	result = pack('>I', len(string))
+	pdb.set_trace()
 	for i in string:
 		a = key ^ i
 		key = a
