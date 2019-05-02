@@ -5,7 +5,29 @@ import pdb
 import time
 import lib.extract as extract
 import lib.state as state
+from struct import pack
+from binascii import unhexlify
 
+def tplink_fuzz(msgs, conn):
+	host = '192.168.0.1'	
+	port = 9999
+	msg_num = len(msgs)
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	s.connect((host, port))
+	s.settimeout(3)
+	data = b''
+	for m in msgs:
+		#try:
+		s.send(encrypt(m))
+		while True:			
+			seg = s.recv(1024)			
+			if not seg:
+				break
+			else:
+				data += extract.decrypt(seg)	
+
+		#except Exception as e:
+		#	print(e)
 
 def tcp_fuzz(msgs, conn):
 	host = conn[0]	
@@ -182,10 +204,12 @@ def start(root, end, s_list, trace, conn):
 
 def encrypt(string):	#tplink
 	key = 171
-	result = pack('>I', len(string))
+	result = b'\x00\x00\x00'
+	result += chr(len(string)).encode()
 	for i in string:
-		a = key ^ ord(i)
+		a = key ^ i
 		key = a
-		result += chr(a)
+		result += unhexlify(hex(a)[2:])
+	#pdb.set_trace()
 	return result
 

@@ -3,13 +3,14 @@ import pdb
 
 def find_rule(traces, g_num):
 	#rule[i][j] = (a, b) means index a in group i req equals index b in group j resp
+	print('Finding rule...')
 	rules = [[None] * g_num for _ in range(g_num)]  
 	for tr in traces:
 		pre_msg = [None] * g_num
 		for msg in tr:
 			g = msg.group.index
-			for m in range(len(pre_msg)):
-				if pre_msg[m] == None or m == msg.group.index:	
+			for m in range(g_num):
+				if pre_msg[m] == None or m == msg.group.index or rules[g][m] == set():	
 					continue
 				if rules[g][m] == None:	#first time
 					rules[g][m] = compare_field(msg, pre_msg[m])
@@ -32,10 +33,12 @@ def find_rule(traces, g_num):
 def compare_field(m1, m2):
 	ret = set()
 	for i in range(len(m1.parts)):
+		if group.entropy(m1.parts[i]) <= 0.6:
+			continue
 		for j in range(len(m2.resp_parts)):
 			if m1.group.fields[i] == None:
 				continue
-			if m1.parts[i] == m2.resp_parts[j] and group.entropy(m1.parts[i]) > 0.6:
+			if m1.parts[i] == m2.resp_parts[j]:
 				#pdb.set_trace()
 				#print('%s %d %d'%(m1.parts[i], m1.group.index, m2.group.index))
 				ret.add((i, j))
