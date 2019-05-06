@@ -66,11 +66,14 @@ def read_pyshark(floder):
 
 msgs = read_pyshark('log/plug')
 f = gzip.open("plug.drk", "wb")
+write_list = []
 for m in msgs:
-	#pdb.set_trace()
 	m = m.replace('\r', '%0d')
-	m = m.replace('\n', '%0a')
-	f.writelines(m.encode())
+	m = m.replace('\n', '%0a').encode()
+	m += b'\n'
+	#pdb.set_trace()
+	write_list.append(m)
+f.writelines(write_list)
 f.close()
 
 

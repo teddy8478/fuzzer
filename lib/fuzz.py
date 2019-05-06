@@ -7,27 +7,34 @@ import lib.extract as extract
 import lib.state as state
 from struct import pack
 from binascii import unhexlify
+from signal import signal, SIGPIPE, SIG_DFL
 
 def tplink_fuzz(msgs, conn):
-	host = '192.168.0.1'	
+	#host = '192.168.0.1'
+	host = '192.168.200.6'
 	port = 9999
 	msg_num = len(msgs)
+	#signal(SIGPIPE, SIG_DFL)
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.connect((host, port))
-	s.settimeout(3)
+	s.settimeout(0.0)
 	data = b''
 	for m in msgs:
-		#try:
-		s.send(encrypt(m))
-		while True:			
-			seg = s.recv(1024)			
-			if not seg:
-				break
-			else:
-				data += extract.decrypt(seg)	
-
-		#except Exception as e:
-		#	print(e)
+		try:
+			s.send(encrypt(m))
+			'''
+			pdb.set_trace()
+			while True:		
+				seg = s.recv(1024)			
+				if not seg:
+					break
+				else:
+					data += extract.decrypt(seg)
+			'''
+		except socket.error as e:
+			s.close()
+			s.connect((host, port))
+			print(e)
 
 def tcp_fuzz(msgs, conn):
 	host = conn[0]	
@@ -205,11 +212,13 @@ def start(root, end, s_list, trace, conn):
 def encrypt(string):	#tplink
 	key = 171
 	result = pack('>I', len(string))
-	pdb.set_trace()
 	for i in string:
 		a = key ^ i
 		key = a
-		result += unhexlify(hex(a)[2:])
+		hex_v = hex(a)[2:]
+		if len(hex_v) == 1:
+			hex_v = '0' + hex_v
+		result += unhexlify(hex_v)
 	#pdb.set_trace()
 	return result
 

@@ -1,113 +1,120 @@
+clustering...
+Finding rule...
 0.100000 4
+clustering...
+Finding rule...
 0.200000 4
+clustering...
+Finding rule...
 0.300000 3
-clustering time: 0.602423 sec
-[0, 1, 2, 3, 4, 3, 5, 2, 3, 4, 3, 5]
-[0, 6, 7, 6]
-[8, 8, 9, 10, 11, 12, 0, 12, 13, 14]
-[8, 0, 3, 2, 15, 4, 15, 5, 2, 15, 4, 15, 5]
-[0, 1, 2, 3, 5, 2, 3, 5]
-[8, 0, 1, 0, 9, 10, 11, 12, 13, 14, 0, 14, 13, 12, 13, 14, 13, 14]
+clustering time: 0.681428 sec
+[0, 1, 2, 1]
+[0, 3, 4, 5, 6, 4, 5, 6]
+[0, 7, 8, 9, 8, 7, 8, 7]
+[0, 10, 11, 12, 9, 8, 7, 8, 7]
+[13, 0, 5, 4, 14, 15, 14, 6, 4, 14, 15, 14, 6]
+[0, 3, 4, 5, 15, 5, 6, 4, 5, 15, 5, 6]
+[13, 13, 10, 11, 12, 9, 0, 9, 8, 7]
 [0, 16, 17, 18, 0]
-[0, 9, 10, 11, 12, 13, 14, 13, 14]
-[0, 14, 13, 12, 13, 14, 13, 14]
+[13, 0, 3, 0, 10, 11, 12, 9, 8, 7, 0, 7, 8, 9, 8, 7, 8, 7]
+Finding rule...
 [
 Group: 0
-member: [0, 14, 39, 44, 58, 69, 71, 80, 89, 96, 97, 111]
+member: [0, 14, 24, 36, 51, 65, 90, 94, 101, 103, 105, 114]
 {"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"system":{"get_sysinfo":{}}} 
 Total value: 1	 Identified: 0
 , 
 Group: 1
-member: [1, 59, 70]
-{"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"schedule":{"get_rules":{}}} 
+member: [1, 3, 5, 7, 9, 11, 13]
+{"anti_theft":{"get_rules":{}},"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"}} 
 Total value: 1	 Identified: 0
 , 
 Group: 2
-member: [2, 8, 46, 52, 60, 64]
-{"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"schedule":{"add_rule":{"day":____,"eact":-1,"emin":0,"enable":1,"etime_opt":-1,"month":____,"name":"","repeat":____,"sact":____,"smin":____,"stime_opt":0,"wday":[____,____,____,____,____,____,____],"year":____}}} 
-Total value: 20	 Identified: 13
+member: [2, 4, 6, 8, 10, 12]
+{"anti_theft":{"edit_rule":{"day":0,"duration":2,"emin":____,"enable":____,"etime_opt":0,"force":0,"frequency":5,"id":"C39CD242B356D8260FA3F2F7D385D90B","lastFor":1,"latitude":0,"longitude":0,"month":0,"name":"","repeat":1,"smin":____,"stime_opt":0,"wday":[____,____,____,____,____,____,____],"year":0},"set_overall_enable":{"enable":1}},"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"}} 
+Total value: 26	 Identified: 10
 , 
 Group: 3
-member: [3, 4, 6, 9, 10, 12, 45, 61, 62, 65, 66]
+member: [15, 66, 104]
 {"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"schedule":{"get_rules":{}}} 
 Total value: 1	 Identified: 0
 , 
 Group: 4
-member: [5, 11, 49, 55]
-{"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"schedule":{"edit_rule":{"day":____,"eact":-1,"emin":0,"enable":1,"etime_opt":-1,"id":"____","month":____,"name":"","repeat":____,"sact":____,"smin":____,"stime_opt":0,"wday":[____,____,____,____,____,____,____],"year":____}}} 
-Total value: 21	 Identified: 14
+member: [16, 20, 53, 59, 67, 73]
+{"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"schedule":{"add_rule":{"day":____,"eact":-1,"emin":0,"enable":1,"etime_opt":-1,"month":____,"name":"","repeat":____,"sact":____,"smin":____,"stime_opt":0,"wday":[____,____,____,____,____,____,____],"year":____}}} 
+Total value: 20	 Identified: 13
 , 
 Group: 5
-member: [7, 13, 51, 57, 63, 67]
+member: [17, 18, 21, 22, 52, 68, 69, 71, 74, 75, 77]
+{"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"schedule":{"get_rules":{}}} 
+Total value: 1	 Identified: 0
+, 
+Group: 6
+member: [19, 23, 58, 64, 72, 78]
 {"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"schedule":{"delete_rule":{"id":"____"}}} 
 Total value: 2	 Identified: 1
 , 
-Group: 6
-member: [15, 17, 19, 21, 23, 25, 27]
-{"anti_theft":{"get_rules":{}},"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"}} 
+Group: 7
+member: [25, 29, 32, 35, 42, 46, 49, 93, 113, 115, 119, 122]
+{"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"count_down":{"get_rules":{}}} 
 Total value: 1	 Identified: 0
 , 
-Group: 7
-member: [16, 18, 20, 22, 24, 26]
-{"anti_theft":{"edit_rule":{"day":0,"duration":2,"emin":____,"enable":____,"etime_opt":0,"force":0,"frequency":5,"id":"C39CD242B356D8260FA3F2F7D385D90B","lastFor":1,"latitude":0,"longitude":0,"month":0,"name":"","repeat":1,"smin":____,"stime_opt":0,"wday":[____,____,____,____,____,____,____],"year":0},"set_overall_enable":{"enable":1}},"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"}} 
-Total value: 26	 Identified: 10
-, 
 Group: 8
-member: [28, 29, 43, 68]
-{"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"____":{"____":{}}} 
-Total value: 1	 Identified: 2
+member: [26, 28, 30, 31, 33, 34, 41, 43, 45, 47, 48, 92, 112, 116, 118, 120, 121]
+{"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"count_down":{"edit_rule":{"act":____,"delay":____,"enable":____,"id":"____","name":"add timer"}}} 
+Total value: 6	 Identified: 4
 , 
 Group: 9
-member: [30, 31, 32, 33, 34, 35, 72, 73, 74, 98]
+member: [27, 40, 44, 89, 91, 111, 117]
 {"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"count_down":{"get_rules":{}}} 
 Total value: 1	 Identified: 0
 , 
 Group: 10
-member: [36, 75, 99]
-{"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"count_down":{"delete_all_rules":{}}} 
+member: [37, 81, 82, 83, 84, 85, 86, 106, 107, 108]
+{"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"count_down":{"get_rules":{}}} 
 Total value: 1	 Identified: 0
 , 
 Group: 11
-member: [37, 76, 100]
+member: [38, 87, 109]
+{"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"count_down":{"delete_all_rules":{}}} 
+Total value: 1	 Identified: 0
+, 
+Group: 12
+member: [39, 88, 110]
 {"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"count_down":{"add_rule":{"act":0,"delay":____,"enable":1,"name":"add timer"}}} 
 Total value: 5	 Identified: 1
 , 
-Group: 12
-member: [38, 40, 77, 83, 101, 105, 114]
-{"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"count_down":{"get_rules":{}}} 
-Total value: 1	 Identified: 0
-, 
 Group: 13
-member: [41, 78, 82, 84, 86, 87, 102, 104, 106, 108, 109, 113, 115, 117, 118, 120, 121]
-{"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"count_down":{"edit_rule":{"act":____,"delay":____,"enable":____,"id":"____","name":"add timer"}}} 
-Total value: 6	 Identified: 4
+member: [50, 79, 80, 102]
+{"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"____":{"____":{}}} 
+Total value: 1	 Identified: 2
 , 
 Group: 14
-member: [42, 79, 81, 85, 88, 103, 107, 110, 112, 116, 119, 122]
-{"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"count_down":{"get_rules":{}}} 
-Total value: 1	 Identified: 0
-, 
-Group: 15
-member: [47, 48, 50, 53, 54, 56]
+member: [54, 55, 57, 60, 61, 63]
 {"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"schedule":{"get_rules":{}}} 
 Total value: 1	 Identified: 0
 , 
+Group: 15
+member: [56, 62, 70, 76]
+{"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"schedule":{"edit_rule":{"day":____,"eact":-1,"emin":0,"enable":1,"etime_opt":-1,"id":"____","month":____,"name":"","repeat":____,"sact":____,"smin":____,"stime_opt":0,"wday":[____,____,____,____,____,____,____],"year":____}}} 
+Total value: 21	 Identified: 14
+, 
 Group: 16
-member: [90, 93]
+member: [95, 98]
 {"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"____":{"get_daystat":{"month":3,"year":2019}}} 
 Total value: 3	 Identified: 1
 , 
 Group: 17
-member: [91, 94]
+member: [96, 99]
 {"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"____":{"get_daystat":{"month":4,"year":2019}}} 
 Total value: 3	 Identified: 1
 , 
 Group: 18
-member: [92, 95]
+member: [97, 100]
 {"context":{"source":"46a4d58b-6279-432c-ae23-e115c2db8354"},"emeter":{"get_realtime":{}}} 
 Total value: 1	 Identified: 0
 ]
-[[], [], [], [], [(44, 2, 30)], [(24, 2, 30)], [], [], [], [], [], [], [], [(36, 11, 30)], [], [], [], [(13, 16, 19)], [], [], [], []]
+[[], [], [], [], [], [], [(24, 4, 30)], [], [(36, 7, 39)], [], [], [], [], [], [], [(44, 4, 30)], [], [(13, 16, 19)], [], [], [], []]
 Real group: 15	Identified: 12	Coverage: 0.800000
-[{11, 36}, {34, 12, 37}, {67, 51, 61, 22}, {52, 68, 62, 23}, {50, 60, 66}]
+[{9, 41}, {10, 35, 42}, {66, 21, 14}, {49, 67, 22, 15}, {16, 50, 68, 23}]
 start fuzzing...
