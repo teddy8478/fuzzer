@@ -18,22 +18,21 @@ def tplink_fuzz(msgs, conn):
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	s.connect((host, port))
 	s.settimeout(0.0)
-	data = b''
 	for m in msgs:
+		data = b''
 		try:
 			s.send(encrypt(m))
-			'''
+			
 			pdb.set_trace()
+			
 			while True:		
 				seg = s.recv(1024)			
 				if not seg:
 					break
 				else:
 					data += extract.decrypt(seg)
-			'''
+			
 		except socket.error as e:
-			s.close()
-			s.connect((host, port))
 			print(e)
 
 def tcp_fuzz(msgs, conn):
