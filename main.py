@@ -11,7 +11,7 @@ conn = (ip, port)
 msgs = extract.read_pyshark('log/' + sys.argv[1])
 #msgs = extract.read_pcap_test('../pulsar/example.pcap')
 tStart = time.time()
-entr = 0.1
+entr = 0.05
 pre_cnt = -1
 pre_list = []
 while entr <= 1:
@@ -41,7 +41,7 @@ while entr <= 1:
 	elif rule_num > pre_cnt:
 		pre_list = cur_list
 		pre_cnt = rule_num
-	entr += 0.1
+	entr += 0.05
 
 group_list = pre_list	
 
@@ -65,7 +65,7 @@ exp.result(msgs, group_list)
 #pdb.set_trace()
 tree_root, end, s_list = state.construct(trace)
 print('start fuzzing...')
-fuzz.tplink_fuzz([msgs[0].req for i in range(5)], conn)
+#fuzz.tplink_fuzz([msgs[0].req for i in range(5)], conn)
 #fuzz.tplink_fuzz(fuzz.mutate(group_list[4].msgs[0]), conn)
 #fuzz.start(tree_root, end, s_list, trace, conn)
 
