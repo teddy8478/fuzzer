@@ -1,4 +1,5 @@
 from os import listdir
+import sys
 import re
 import pdb
 import math
@@ -6,6 +7,7 @@ import pyshark
 import collections
 import binascii
 import gzip
+from lib import extract
 
 def read_pyshark(floder):
 	ret = []
@@ -44,28 +46,33 @@ def read_pyshark(floder):
 				raw = str(packet.tcp.payload).replace(':', '')
 				if hasattr(packet, 'ip'):
 					if packet.ip.src == src:
-						req += binascii.a2b_hex(raw).decode('utf-8', 'ignore')	
+						#pdb.set_trace()
+						if sys.argv[1] == 'tplink':
+							req += extract.decrypt(binascii.a2b_hex(raw)).decode()
+						else:
+							req += binascii.a2b_hex(raw).decode('utf-8', 'ignore')	
 					else:
-						resp += binascii.a2b_hex(raw).decode('utf-8', 'ignore')
+						if sys.argv[1] == 'tplink':
+							resp += extract.decrypt(binascii.a2b_hex(raw)).decode()
+						else:
+							resp += binascii.a2b_hex(raw).decode('utf-8', 'ignore')
 				elif hasattr(packet, 'ipv6'):
 					if packet.ipv6.src == src:
 						req += binascii.a2b_hex(raw).decode('utf-8', 'ignore')	
 					else:
 						resp += binascii.a2b_hex(raw).decode('utf-8', 'ignore')
-
-			'''
-			req = decrypt(req)
-			resp = decrypt(resp)
-			pdb.set_trace()
-			'''
+			
+			#pdb.set_trace()
+			
 			ret.append(req)
 			ret.append(resp)
 			index += 1
 		f_num += 1
 	return ret
 
-msgs = read_pyshark('log/plug')
-f = gzip.open("plug.drk", "wb")
+msgs = read_pyshark('log/' + sys.argv[1])
+
+f = gzip.open(sys.argv[1] + ".drk", "wb")
 write_list = []
 for m in msgs:
 	m = m.replace('\r', '%0d')
