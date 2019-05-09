@@ -1,4 +1,5 @@
 import socket
+import sys
 import re
 import os
 import pdb
@@ -15,25 +16,26 @@ def tplink_fuzz(msgs, conn):
 	port = 9999
 	msg_num = len(msgs)
 	#signal(SIGPIPE, SIG_DFL)
-	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	s.connect((host, port))
-	s.settimeout(0.0)
+	#s.settimeout(0.0)
 	for m in msgs:
 		data = b''
 		try:
+			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			s.connect((host, port))
 			s.send(encrypt(m))
-			
-			pdb.set_trace()
-			
-			while True:		
-				seg = s.recv(1024)			
-				if not seg:
-					break
-				else:
-					data += extract.decrypt(seg)
-			
+				
+			#pdb.set_trace()
+			seg = s.recv(1024)
+			#sys.stdout.write(extract.decrypt(seg).decode() + '\n')
+			if not seg:
+				pass
+			else:
+				data = extract.decrypt(seg)
 		except socket.error as e:
-			print(e)
+			sys.stdout.write(m.decode())
+			sys.stdout.write(e)
+		s.close()
+	return data
 
 def tcp_fuzz(msgs, conn):
 	host = conn[0]	
@@ -136,7 +138,7 @@ def http(m):
 	
 	return m
 
-def mutate(msg):
+def mutate(msg, rule):
 	g = msg.group
 	index = msg.index
 	fuzz_list = []
@@ -164,7 +166,7 @@ def mutate(msg):
 	for cur in range(len(part)):
 		if g.fields[cur] == None or g.fields[cur] =='':
 			continue
-
+			
 		if g.fields[cur] == 'int':
 			ptn = int_ptn
 		elif g.fields[cur] == 'float':
@@ -174,6 +176,9 @@ def mutate(msg):
 		for p in ptn:
 			flow = b''
 			for i in range(len(part)):
+				if i in rule.keys():
+					flow += rule[i] + chr(deli[i]).encode()
+					continue
 				if i == cur:
 					flow += p.encode() + chr(deli[i]).encode()
 				else:
@@ -182,26 +187,39 @@ def mutate(msg):
 
 	return fuzz_list
 
-def start(root, end, s_list, trace, conn):
+def start(root, end, s_list, trace, conn, rules):
 	
 	for e in end:
 		cur = root
 		cur_tr = s_list[e].trace[0]
 		print('Trace ' + str([m.group.index for m in trace[cur_tr]]))
-		for m in trace[cur_tr]:	
+		pre_resp = [None] * len(rules)
+		for m in trace[cur_tr]:
 			g = m.group.index
 			if g not in cur.remain:
 				print('Replay group ' + str(m.group.index))
-				#tcp_fuzz(m, conn)
+				pdb.set_trace()
+				if sys.argv[1] == 'tplink':
+					pre_resp[g] = tplink_fuzz(m, conn)
+				elif sys.argv[1] == 'plug':
+					pre_resp[g] = tcp_fuzz(m, conn)
 				cur = cur.trans[g]
 				continue
-			fuzz_msg = mutate(m)
+				
+			cur_r = dict()
+			for r in rules[g]:
+				part, deli = extract.parse(pre_resp[r[1]])
+				cur_r[r[0]] = part[r[2]]
+
+			fuzz_msg = mutate(m, cur_r)
 			print('Fuzzing state ' + str(cur.index) + ', group ' + str(g))
 			resp = b''			
-			for f in fuzz_msg:			
-				#resp = tcp_fuzz(f, conn)
-				parts, deli = extract.parse(resp)
-
+			for f in fuzz_msg:
+				if sys.argv[1] == 'tplink':
+					pre_resp[g] = tplink_fuzz([f], conn)
+				elif sys.argv[1] == 'plug':
+					pre_resp[g] = tcp_fuzz(f, conn)
+			
 			cur.remain.remove(g)
 			cur = cur.trans[g]
 			if cur.index == 1:

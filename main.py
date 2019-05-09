@@ -62,12 +62,12 @@ rules, rule_num = rule.find_rule(trace, len(cur_list))
 print(group_list)
 print(rules)
 exp.result(msgs, group_list)
-#pdb.set_trace()
+pdb.set_trace()
 tree_root, end, s_list = state.construct(trace)
 print('start fuzzing...')
 #fuzz.tplink_fuzz([msgs[0].req for i in range(5)], conn)
-#fuzz.tplink_fuzz(fuzz.mutate(group_list[4].msgs[0]), conn)
-#fuzz.start(tree_root, end, s_list, trace, conn)
+#fuzz.tplink_fuzz(fuzz.mutate(group_list[4].msgs[0], dict()), conn)
+fuzz.start(tree_root, end, s_list, trace, conn, rules)
 
 
 
