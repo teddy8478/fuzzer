@@ -16,7 +16,7 @@ Finding rule...
 clustering...
 Finding rule...
 0.300000 3
-clustering time: 0.304995 sec
+clustering time: 0.311673 sec
 [0, 1, 2, 3, 4, 3, 5, 2, 3, 4, 3, 5]
 [0, 6, 7, 6]
 [8, 8, 9, 10, 11, 12, 0, 12, 13, 14]
@@ -125,5 +125,6 @@ Total value: 1	 Identified: 0
 ]
 [[], [], [], [], [(44, 2, 30)], [(24, 2, 30)], [], [], [], [], [], [], [], [(36, 11, 30)], [], [], [], [(13, 16, 19)], [], [], [], []]
 Real group: 15	Identified: 12	Coverage: 0.800000
-[{11, 36}, {34, 12, 37}, {67, 51, 61, 22}, {52, 68, 62, 23}, {50, 60, 66}]
-start fuzzing...
+> /home/andy/fuzzer/main.py(66)<module>()
+-> tree_root, end, s_list = state.construct(trace)
+(Pdb) 
