@@ -10,7 +10,10 @@ def find_rule(traces, g_num):
 		for msg in tr:
 			g = msg.group.index
 			for m in range(g_num):
-				if pre_msg[m] == None or m == msg.group.index or rules[g][m] == set():	
+				if pre_msg[m] == None:
+					rules[g][m] = set()
+					continue
+				if m == msg.group.index or rules[g][m] == set():	
 					continue
 				if rules[g][m] == None:	#first time
 					rules[g][m] = compare_field(msg, pre_msg[m])
@@ -33,7 +36,7 @@ def find_rule(traces, g_num):
 def compare_field(m1, m2):
 	ret = set()
 	for i in range(len(m1.parts)):
-		if group.entropy(m1.parts[i]) <= 0.6:
+		if group.entropy(m1.parts[i]) <= 0.6 or m1.group.fields[i] == None:
 			continue
 		for j in range(len(m2.resp_parts)):
 			if m1.group.fields[i] == None:

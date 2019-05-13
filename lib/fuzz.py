@@ -198,9 +198,9 @@ def start(root, end, s_list, trace, conn, rules):
 			g = m.group.index
 			if g not in cur.remain:
 				print('Replay group ' + str(m.group.index))
-				pdb.set_trace()
+				#pdb.set_trace()
 				if sys.argv[1] == 'tplink':
-					pre_resp[g] = tplink_fuzz(m, conn)
+					pre_resp[g] = tplink_fuzz([m.req], conn)
 				elif sys.argv[1] == 'plug':
 					pre_resp[g] = tcp_fuzz(m, conn)
 				cur = cur.trans[g]
@@ -212,14 +212,18 @@ def start(root, end, s_list, trace, conn, rules):
 				cur_r[r[0]] = part[r[2]]
 
 			fuzz_msg = mutate(m, cur_r)
-			print('Fuzzing state ' + str(cur.index) + ', group ' + str(g))
+			#print('Fuzzing state ' + str(cur.index) + ', group ' + str(g))
+			print('Fuzzing state %d, group %d, %d test cases...' % (cur.index, g, len(fuzz_msg)))
 			resp = b''			
 			for f in fuzz_msg:
 				if sys.argv[1] == 'tplink':
-					pre_resp[g] = tplink_fuzz([f], conn)
+					tplink_fuzz([f], conn)
 				elif sys.argv[1] == 'plug':
-					pre_resp[g] = tcp_fuzz(f, conn)
-			
+					tcp_fuzz(f, conn)
+			if sys.argv[1] == 'tplink':
+				pre_resp[g] = tplink_fuzz([m.req], conn)
+			elif sys.argv[1] == 'plug':
+				pre_resp[g] = tcp_fuzz(m, conn)
 			cur.remain.remove(g)
 			cur = cur.trans[g]
 			if cur.index == 1:

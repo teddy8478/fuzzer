@@ -9,12 +9,12 @@ def rm_cyc(msgs):
 		trace.append([m.group.index for m in msgs if m.file == i])
 	reduced = []
 	for t in trace:
-		s = str(t)[1:-1].replace(',', '')	
+		s = str(t)[1:-1].replace(',', '') + ' '
 		regex = re.compile(r' (.+)( \1)+ ')
 		while True:
 			match = regex.search(s)
 			if not hasattr(match, 'group'):
-				final = s.split(' ')
+				final = s[:-1].split(' ')
 				reduced.append(list(map(int,final)))
 				break
 			s = s.replace(match.group(0), ' ' + match.group(1) + ' ')		

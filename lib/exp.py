@@ -15,7 +15,10 @@ def result(msgs, groups):
 				ident[i] = 1
 				break
 	ident_cnt = ident.count(1)
-	cov = ident_cnt / g_cnt
+	if g_cnt == 0:
+		cov =0
+	else:
+		cov = ident_cnt / g_cnt
 	#pdb.set_trace()
 	print('Real group: %d\tIdentified: %d\tCoverage: %f' % (g_cnt, ident_cnt, cov))
 

@@ -55,17 +55,18 @@ for i in range(len(group_list)):
 group_order = [m.group.index for m in msgs]
 
 trace = []
+#pdb.set_trace()
 trace = state.rm_cyc(msgs)
 for tr in trace:
 	print([m.group.index for m in tr])
 rules, rule_num = rule.find_rule(trace, len(cur_list))
-#print(group_list)
+print(group_list)
 print(rules)
 exp.result(msgs, group_list)
 pdb.set_trace()
 tree_root, end, s_list = state.construct(trace)
 print('start fuzzing...')
-#fuzz.tplink_fuzz([msgs[0].req for i in range(5)], conn)
+#fuzz.tplink_fuzz([group_list[6].msgs[0].req], conn)
 #fuzz.tplink_fuzz(fuzz.mutate(group_list[4].msgs[0], dict()), conn)
 #fuzz.start(tree_root, end, s_list, trace, conn, rules)
 
