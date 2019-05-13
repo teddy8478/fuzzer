@@ -5,6 +5,8 @@ import math
 import pdb
 import json
 import xmltodict
+import sys
+from urllib import parse
 
 def divide(msgs, index, pre_key, entr):
 	msg_cnt = len(msgs)
@@ -135,10 +137,15 @@ class group:
 		data = {}
 		req = self.msgs[0].req.decode()
 		data = lib.exp.to_dict(req)
-		if isinstance(data, dict):
-			v_cnt = dict_cnt(data)
+		if sys.argv[1] == 'router':
+			line = req.split('\r\n')
+			#pdb.set_trace()
+			v_cnt = len(parse.parse_qs(line[0]).keys()) + len(parse.parse_qs(line[-1]).keys())
 		else:
-			v_cnt = 0
+			if isinstance(data, dict):
+				v_cnt = dict_cnt(data)
+			else:
+				v_cnt = 0
 		self.v_cnt = v_cnt
 		f_cnt = len([f for f in self.fields if f != None])
 		#print('Total value: %d\t Identified: %d\n' % (v_cnt, f_cnt))

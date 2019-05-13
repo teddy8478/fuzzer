@@ -42,7 +42,6 @@ while entr <= 1:
 		pre_list = cur_list
 		pre_cnt = rule_num
 	entr += 0.05
-
 group_list = pre_list	
 
 group_list.sort(key = lambda g: g.member[0])
@@ -63,7 +62,7 @@ rules, rule_num = rule.find_rule(trace, len(cur_list))
 print(group_list)
 print(rules)
 exp.result(msgs, group_list)
-pdb.set_trace()
+#pdb.set_trace()
 tree_root, end, s_list = state.construct(trace)
 print('start fuzzing...')
 #fuzz.tplink_fuzz([group_list[6].msgs[0].req], conn)

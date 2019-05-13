@@ -1,6 +1,8 @@
 import pdb
 import json
 import xmltodict
+from urllib import parse
+import sys
 
 def result(msgs, groups):
 	dict_l = parse_dict(msgs)
@@ -55,7 +57,13 @@ def to_dict(s):
 		return data
 	except:
 		pass
-	
+	'''
+	if sys.argv[1] == 'router':
+		pdb.set_trace()
+		line = s.split('\r\n')
+
+		return parse.parse_qs(s)
+	'''
 	return ''
 
 def parse_dict(msgs):	#return a list of dict parsed from json or xml
