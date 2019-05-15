@@ -29,7 +29,8 @@ def divide(msgs, index, pre_key, entr):
 		key_set = cnt.keys()
 		cv = list(cnt.values())
 		#if Counter(cv)[1] / len(uni_msg) < 0.5:
-		if entropy([m.parts[cur_index] for m in uni_msg]) < entr:
+		cur_entr = entropy([m.parts[cur_index] for m in uni_msg])
+		if cur_entr < entr:
 			if msgs[0].parts[cur_index - 2] == b'Content-Length':	#for HTTP
 				cur_index += 1
 			elif set(key_set) == {b'0', b'1'}:	#boolean field
@@ -44,7 +45,7 @@ def divide(msgs, index, pre_key, entr):
 	if cur_index == len(msgs[0].parts):	#in the end of msg
 		return [group(pre_key, msgs)]
 
-	#if len(key_set) > 1:
+	#if len(key_set) > 1 or entr == 0.4:
 	#	pdb.set_trace()
 		
 		
@@ -99,39 +100,52 @@ class group:
 		self.keys = [None] * len(member[0].parts)
 		self.fields = [None] * len(member[0].parts)
 		self.deli_order = [d for d in member[0].deli_order]
+		self.ident = False
+		
 		if len(set(m.req for m in member)) == 1:
 			self.keys = member[0].parts
-			return
-
-		for i in range(len(member[0].parts)):
-			if i in key_index:
-				self.keys[i] = member[0].parts[i]
-			else:	#s>i>f>''>none
-				for f in [m.parts[i] for m in member]:
-					if data_type(f) == 'string':
-						self.fields[i] = 'string'
-					elif data_type(f) == 'int' and self.fields[i] != 'string':
-						self.fields[i] = 'int'
-					elif data_type(f) == 'float' and self.fields[i] != 'string' and self.fields[i] != 'int':
-						self.fields[i] = 'float'
-					elif data_type(f) == '' and self.fields[i] == None:
-						self.fields[i] = ''
+		else:
+			for i in range(len(member[0].parts)):
+				if i in key_index:
+					self.keys[i] = member[0].parts[i]
+				else:	#s>i>f>''>none
+					for f in [m.parts[i] for m in member]:
+						if data_type(f) == 'string':
+							self.fields[i] = 'string'
+						elif data_type(f) == 'int' and self.fields[i] != 'string':
+							self.fields[i] = 'int'
+						elif data_type(f) == 'float' and self.fields[i] != 'string' and self.fields[i] != 'int':
+							self.fields[i] = 'float'
+						elif data_type(f) == '' and self.fields[i] == None:
+							self.fields[i] = ''
+		self.resp_keys = set(member[0].resp_parts)
+		for m in member[1:]:
+			self.resp_keys = self.resp_keys & set(m.resp_parts)
+		
 		self.v_cnt = 0
-		self.show_result()
-	
-	def __repr__(self):
-		re = b'\nGroup: ' + str(self.index).encode() + b'\n' + b'member: ' + str(self.member).encode() + b'\n'
-		#re += 'Keys: ' + str(self.keys) + '\nFields' + str(self.fields) + '\n'
+		self.f_cnt = 0
+		self.repr = b''
 		l = len(self.keys)
 		deli = self.deli_order + [32]
 		for i in range(l):
 			if self.fields[i] == None:
-				re += self.keys[i]
+				self.repr += self.keys[i]
 			else:
 				#re += self.fields[i].encode()
-				re += '____'.encode()
-			re += chr(deli[i]).encode()
-		return bytes.decode(re) + self.show_result()
+				self.repr += '____'.encode()
+			self.repr += chr(deli[i]).encode()
+		
+		#pdb.set_trace()
+		self.show_result()
+
+	def __repr__(self):
+		if self.ident:
+			re = b'*'
+		else:
+			re = b''
+		re += b'\nGroup: ' + str(self.index).encode() + b'\n' + b'member: ' + str(self.member).encode() + b'\n'
+		#re += 'Keys: ' + str(self.keys) + '\nFields' + str(self.fields) + '\n'
+		return bytes.decode(re) + bytes.decode(self.repr) + self.show_result()
 		
 	def show_result(self):
 		data = {}
@@ -148,5 +162,6 @@ class group:
 				v_cnt = 0
 		self.v_cnt = v_cnt
 		f_cnt = len([f for f in self.fields if f != None])
+		self.f_cnt = f_cnt
 		#print('Total value: %d\t Identified: %d\n' % (v_cnt, f_cnt))
 		return '\nTotal value: %d\t Identified: %d\n' % (v_cnt, f_cnt)

@@ -1,5 +1,6 @@
 from lib import group
 import pdb
+import math
 
 def find_rule(traces, g_num):
 	#rule[i][j] = (a, b) means index a in group i req equals index b in group j resp
@@ -36,7 +37,7 @@ def find_rule(traces, g_num):
 def compare_field(m1, m2):
 	ret = set()
 	for i in range(len(m1.parts)):
-		if group.entropy(m1.parts[i]) <= 0.6 or m1.group.fields[i] == None:
+		if group.entropy(m1.parts[i]) <= 0.6 or m1.group.fields[i] == None or (m1.parts[i] in m1.group.resp_keys):
 			continue
 		for j in range(len(m2.resp_parts)):
 			if m1.group.fields[i] == None:
@@ -46,5 +47,16 @@ def compare_field(m1, m2):
 				#print('%s %d %d'%(m1.parts[i], m1.group.index, m2.group.index))
 				ret.add((i, j))
 	return ret
+
+def entropy_str(input_l):
+	en = 0.0
+	l = len(input_l)
+	if l < 2:
+		return 0
+	input_set = set(list(input_l))
+	for s in input_set:
+		freq = input_l.count(s) / len(input_l)
+		en += freq * math.log(freq, 2)
+	return -en
 
 

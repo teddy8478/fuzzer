@@ -7,16 +7,31 @@ import sys
 def result(msgs, groups):
 	dict_l = parse_dict(msgs)
 	g_cnt = len(dict_l)
-	ident = [0] * g_cnt
-	for g in groups:
-		g_dict = to_dict(str(g).replace('____', '0'))
-		if not isinstance(g_dict, dict):
-			continue
+	ident = [-1] * g_cnt
+	for g in range(len(groups)):
+		#pdb.set_trace()
+		
+		g_dict = to_dict(bytes.decode(groups[g].repr).replace('____', '0'))
+		if sys.argv[1] != 'router':
+			if not isinstance(g_dict, dict):
+				continue
+			
 		for i in range(g_cnt):
 			if dict_sim(g_dict, dict_l[i]) == 1:
-				ident[i] = 1
+				if ident[i] == -1:
+					ident[i] = g
+					groups[g].ident = True
+				else:
+					if groups[ident[i]].f_cnt < groups[g].f_cnt:
+						groups[g].ident = True
+						groups[ident[i]].ident = False
+						ident[i] = g
 				break
-	ident_cnt = ident.count(1)
+	ident_cnt = g_cnt - ident.count(-1)
+	print('Not identified: ')
+	for i in range(g_cnt):
+		if ident[i] == -1:
+			print(dict_l[i])
 	if g_cnt == 0:
 		cov =0
 	else:
@@ -57,18 +72,26 @@ def to_dict(s):
 		return data
 	except:
 		pass
-	'''
+	
 	if sys.argv[1] == 'router':
-		pdb.set_trace()
 		line = s.split('\r\n')
+		url = line[0].split(' ')[1]
+		par_result = parse.urlparse(url)
+		data = dict()
+		if par_result.path.find(';stok=') > -1:
+			beg = par_result.path.find(';stok=') + 6
+			end = par_result.path.find('/', beg)
+			p = par_result.path[:beg] + par_result.path[end:]
+			data[p] = ''
+		else:
+			data[par_result.path] = ''
+		data = {**data, **parse.parse_qs(par_result.query), **parse.parse_qs(line[-1])}
+		return data
 
-		return parse.parse_qs(s)
-	'''
 	return ''
 
 def parse_dict(msgs):	#return a list of dict parsed from json or xml
 	ret = []
-	
 	for m in msgs:
 		data = to_dict(m.req.decode())
 		exist = 0

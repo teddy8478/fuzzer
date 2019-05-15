@@ -63,7 +63,7 @@ def construct(traces):	#construct FSM tree
 		cur.prefix.append(tr)	
 		cur.leaf = True
 		cur.add_child(trace[-1], final)
-	
+		final.lv = cur.lv + 1	
 	#find the equivalent state
 	while(True):		
 		for i in range(len(leaf)):
@@ -72,6 +72,8 @@ def construct(traces):	#construct FSM tree
 					leaf[i].equal.append(leaf[j].index)
 					leaf[j].equal.append(leaf[i].index)
 		for i in range(len(leaf)):
+			if leaf[i].index == 1:
+				continue
 			leaf[i].parent.postfix.add(leaf[i].index)
 			leaf[i].parent.postfix = leaf[i].parent.postfix | leaf[i].postfix
 			leaf[i] = leaf[i].parent

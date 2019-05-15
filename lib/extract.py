@@ -103,8 +103,8 @@ class msg:
 def parse(raw):
 	parts = []
 	first_sym = b' |\r|\n'
-	symbols = b' |:|/|&|=|\r|\n|,|\?|\"|<|>|#|\[|\]|\{|\}'
-	non_base64 = b' |:|&|=|\r|\n|,|\?|\"|<|>|#|\[|\]|\{|\}'
+	symbols = b' |:|/|&|=|\r|\n|,|\?|\"|<|>|#|\[|\]|\{|\}|%'
+	non_base64 = b' |:|&|=|\r|\n|,|\?|\"|<|>|#|\[|\]|\{|\}|%'
 	deli_order = raw
 	seg = re.split(first_sym, raw)
 	for s in seg:
