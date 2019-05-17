@@ -99,6 +99,8 @@ def construct(traces):	#construct FSM tree
 				continue
 			merge = list(merge[0])
 			for m in merge[1:]:
+				if m == 1:
+					continue
 				parent_act = state_list[m].parent.trans
 				pre_act = [act for act, child in parent_act.items() if child.index == m][0]
 				state_list[m].parent.trans[pre_act] = state_list[merge[0]]
