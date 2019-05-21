@@ -12,17 +12,27 @@ from signal import signal, SIGPIPE, SIG_DFL
 
 def tplink_fuzz(msgs, conn):
 	#host = '192.168.0.1'
-	host = '192.168.200.6'
-	port = 9999
+	if sys.argv[1] == 'tplink':
+		host = '192.168.200.6'
+		port = 9999
+	elif sys.argv[1] == 'router':
+		host = '192.168.200.1'
+		port = 80
+
 	msg_num = len(msgs)
 	#signal(SIGPIPE, SIG_DFL)
 	#s.settimeout(0.0)
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	s.connect((host, port))
 	for m in msgs:
 		data = b''
 		try:
-			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-			s.connect((host, port))
-			s.send(encrypt(m))
+			#s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			#s.connect((host, port))
+			if sys.argv[1] == 'tplink':
+				s.send(encrypt(m))
+			else:
+				s.send(m)
 				
 			#pdb.set_trace()
 			seg = s.recv(1024)
@@ -30,11 +40,14 @@ def tplink_fuzz(msgs, conn):
 			if not seg:
 				pass
 			else:
-				data = extract.decrypt(seg)
+				if sys.argv[1] == 'tplink':
+					data = extract.decrypt(seg)
+				else:
+					data = seg
 		except socket.error as e:
 			sys.stdout.write(m.decode())
 			sys.stdout.write(e)
-		s.close()
+	s.close()
 	return data
 
 def tcp_fuzz(msgs, conn):
@@ -216,11 +229,11 @@ def start(root, end, s_list, trace, conn, rules):
 			print('Fuzzing state %d, group %d, %d test cases...' % (cur.index, g, len(fuzz_msg)))
 			resp = b''			
 			for f in fuzz_msg:
-				if sys.argv[1] == 'tplink':
+				if sys.argv[1] == 'tplink' or sys.argv[1] == 'router':
 					tplink_fuzz([f], conn)
 				elif sys.argv[1] == 'plug':
 					tcp_fuzz(f, conn)
-			if sys.argv[1] == 'tplink':
+			if sys.argv[1] == 'tplink' or sys.argv[1] == 'router':
 				pre_resp[g] = tplink_fuzz([m.req], conn)
 			elif sys.argv[1] == 'plug':
 				pre_resp[g] = tcp_fuzz(m, conn)

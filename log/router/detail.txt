@@ -1,0 +1,10 @@
+1	HS110	connection
+2	unknown	connection
+3	RedMi	connection
+4	HS110	three function
+5	nuknown	three function
+6	HTC		three function
+7	unknown	black list
+8	HS110	black list
+9	HTC		three function
+10	HTC		black list

@@ -14,6 +14,8 @@ def read_pyshark(floder):
 	index = 0
 	f_num = 0
 	for filename in listdir(floder):
+		if filename.find('pcap') == -1:
+			continue
 		name = str(floder) + '/' + str(filename)
 		#cap = pyshark.FileCapture(name, display_filter='tcp.stream eq %d' % 1)
 		cap = pyshark.FileCapture(name)

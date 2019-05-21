@@ -6,7 +6,9 @@ def rm_cyc(msgs):
 	ret = []
 	trace = []
 	for i in range(msgs[-1].file + 1):
-		trace.append([m.group.index for m in msgs if m.file == i])
+		tr = [m.group.index for m in msgs if m.file == i]
+		if uni_trace(tr, trace):
+			trace.append(tr)
 	reduced = []
 	for t in trace:
 		s = str(t)[1:-1].replace(',', '') + ' '
@@ -84,7 +86,7 @@ def construct(traces):	#construct FSM tree
 	for s in [set(s.equal) for s in state_list if len(s.equal) > 1]:
 		if s not in equal_list:
 			equal_list.append(s)
-	print(equal_list)
+	#print(equal_list)
 
 	#merge equivalent state
 	lv = 0
@@ -102,7 +104,10 @@ def construct(traces):	#construct FSM tree
 				if m == 1:
 					continue
 				parent_act = state_list[m].parent.trans
-				pre_act = [act for act, child in parent_act.items() if child.index == m][0]
+				acts = [act for act, child in parent_act.items() if child.index == m]
+				if len(acts) == 0:
+					continue
+				pre_act = acts[0]
 				state_list[m].parent.trans[pre_act] = state_list[merge[0]]
 				#remove the subtree
 				state_list[m].leaf = True
@@ -126,7 +131,14 @@ def same_state(s1, s2):
 		if s2.trans[act].index not in s1.trans[act].equal and s1.trans[act].index not in s2.trans[act].equal:
 			return False
 	return True
-	
+
+def uni_trace(tr, traces):
+	for t in traces:
+		min_len = min(len(t), len(tr)) 
+		if t[:min_len] == tr[:min_len]:
+			return False
+	return True
+
 class state:
 	def __init__(self, index, parent):
 		self.index = index

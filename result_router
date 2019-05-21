@@ -1,48 +1,41 @@
 clustering...
 Finding rule...
-0.050000 8
-[[], [], [], [], [], [], [], [(10, 3, 96)], [(50, 3, 96)], [(50, 3, 96)], [(14, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [], [], [], [], [(19, 4, 240)], [], [], [], [], [], []]
+0.050000 7
 clustering...
 Finding rule...
-0.100000 8
-[[], [], [], [], [], [], [], [(10, 3, 96)], [(50, 3, 96)], [(50, 3, 96)], [(14, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [], [], [], [], [(19, 4, 240)], [], [], [], [], [], []]
+0.100000 7
 clustering...
 Finding rule...
-0.150000 8
-[[], [], [], [], [], [], [], [(10, 3, 96)], [(50, 3, 96)], [(50, 3, 96)], [(14, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [], [], [], [], [(19, 4, 240)], [], [], [], [], [], []]
+0.150000 7
 clustering...
 Finding rule...
-0.200000 8
-[[], [], [], [], [], [], [], [(10, 3, 96)], [(50, 3, 96)], [(50, 3, 96)], [(14, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [], [], [], [], [(19, 4, 240)], [], [], [], [], [], []]
+0.200000 7
 clustering...
 Finding rule...
-0.250000 9
-[[], [], [], [], [], [], [], [(10, 3, 96)], [(50, 3, 96)], [(50, 3, 96)], [(50, 3, 96)], [(14, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [], [], [], [], [(19, 4, 240)], [], [], [], [], [], []]
+0.250000 8
 clustering...
 Finding rule...
-0.300000 10
-[[], [], [], [], [], [], [], [(10, 3, 96)], [(50, 3, 96)], [(50, 3, 96)], [(50, 3, 96)], [(14, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [], [], [], [], [(19, 4, 240)], [], [], [], [], [], []]
+0.300000 9
 clustering...
 Finding rule...
-0.350000 9
-[[], [], [], [], [], [], [], [(10, 3, 96)], [], [(50, 3, 96)], [], [], [], [(14, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [], [], [], [], [(19, 4, 240)], [], [], [], [(19, 3, 99)], [], [], [], []]
-clustering time: 1.537230 sec
-[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 7, 10]
-[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 7, 10, 9]
-[0, 1, 2, 3, 4, 5, 6, 11, 12, 13, 14, 15, 14, 13]
-[0, 1, 2, 3, 5, 4, 6, 16, 17, 18, 19, 20, 19, 21, 19]
-[0, 1, 2, 3, 4, 5, 6, 16, 22, 19]
-[0, 1, 2, 23, 3, 5, 6, 11, 12, 13, 14, 13]
-[0, 1, 2, 5, 3, 4, 6, 9, 7, 8, 9, 7, 10, 9]
-[0, 1, 2, 3, 4, 5, 6, 11, 12, 13, 14]
-[0, 1, 2, 4, 6, 5, 3, 16, 24, 16, 25, 19, 26, 19, 20, 19]
-[0, 1, 2, 4, 3, 5, 6, 11, 12, 13, 14, 15, 13]
+0.350000 7
+clustering time: 12.645247 sec
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[0, 1, 2, 4, 3, 5, 6, 10, 11, 12, 13, 14, 12]
+[0, 1, 2, 3, 4, 5, 6, 10, 11, 12, 13]
+[0, 1, 2, 15, 3, 5, 6, 10, 11, 12, 13, 12]
+[0, 1, 2, 3, 4, 5, 6, 16, 17, 18, 16, 19, 18]
+[0, 1, 2, 3, 4, 5, 6, 7, 20, 7, 8, 9, 21, 9, 22, 23]
+[0, 1, 2, 4, 3, 6, 5, 16, 17, 18, 16, 19, 18]
+[0, 1, 2, 3, 5, 4, 6, 10, 11, 12, 13, 12]
+[0, 1, 2, 3, 4, 5, 6, 16, 17, 18, 16, 19]
+[0, 1, 2, 4, 6, 5, 3, 7, 20, 7, 24, 9, 25, 9, 26, 9]
 Finding rule...
 Not identified: 
-Real group: 19	Identified: 19	Coverage: 1.000000
+Real group: 18	Identified: 18	Coverage: 1.000000
 [*
 Group: 0
-member: [0, 18, 39, 56, 72, 87, 103, 125, 140, 156]
+member: [0, 15, 32, 47, 63, 84, 102, 123, 139, 157]
 GET /cgi-bin/luci/api/xqsystem/init_info HTTP/1.1
 Host: 192.168.200.1
 Connection: Keep-Alive
@@ -53,7 +46,7 @@ User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.O
 Total value: 0	 Identified: 0
 , *
 Group: 1
-member: [1, 19, 40, 57, 73, 88, 104, 126, 141, 157]
+member: [1, 16, 33, 48, 64, 85, 103, 124, 140, 158]
 GET /cgi-bin/luci/;stok=____/api/misystem/sys_time HTTP/1.1
 Host: 192.168.200.1
 Connection: Keep-Alive
@@ -64,7 +57,7 @@ User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.O
 Total value: 1	 Identified: 1
 , *
 Group: 2
-member: [2, 20, 41, 58, 74, 89, 105, 127, 142, 158]
+member: [2, 17, 34, 49, 65, 86, 104, 125, 141, 159]
 GET /cgi-bin/luci/;stok=____/api/xqsystem/init_info HTTP/1.1
 Host: 192.168.200.1
 Connection: Keep-Alive
@@ -75,7 +68,7 @@ User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.O
 Total value: 1	 Identified: 1
 , *
 Group: 3
-member: [3, 21, 42, 59, 75, 91, 107, 128, 146, 160]
+member: [3, 19, 35, 51, 66, 87, 106, 126, 142, 163]
 GET /cgi-bin/luci/;stok=____/api/misystem/device_detail?mac=____%____%____%____%____%____&locale=zh_TW HTTP/1.1
 Host: 192.168.200.1
 Connection: Keep-Alive
@@ -86,7 +79,7 @@ User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.O
 Total value: 2	 Identified: 7
 , *
 Group: 4
-member: [4, 22, 43, 61, 76, 108, 129, 143, 159]
+member: [4, 18, 36, 67, 88, 105, 128, 143, 160]
 GET /cgi-bin/luci/;stok=____/api/xqnetwork/wifi_macfilter_info HTTP/1.1
 Host: 192.168.200.1
 Connection: Keep-Alive
@@ -97,7 +90,7 @@ User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.O
 Total value: 1	 Identified: 1
 , *
 Group: 5
-member: [5, 23, 44, 60, 77, 92, 106, 130, 145, 161]
+member: [5, 20, 37, 52, 68, 89, 108, 127, 144, 162]
 GET /cgi-bin/luci/;stok=____/api/misystem/qos_dev_info?mac=____%____%____%____%____%____ HTTP/1.1
 Host: 192.168.200.1
 Connection: Keep-Alive
@@ -108,7 +101,7 @@ User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.O
 Total value: 1	 Identified: 7
 , *
 Group: 6
-member: [6, 24, 45, 62, 78, 93, 109, 131, 144, 162]
+member: [6, 21, 38, 53, 69, 90, 107, 129, 145, 161]
 GET /cgi-bin/luci/;stok=____/api/misystem/netacctl_status?mac=____%____%____%____%____%____ HTTP/1.1
 Host: 192.168.200.1
 Connection: Keep-Alive
@@ -119,112 +112,7 @@ User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.O
 Total value: 1	 Identified: 7
 , *
 Group: 7
-member: [7, 13, 25, 33, 111, 119]
-GET /cgi-bin/luci/;stok=____/api/misystem/parctl_get_url?mac=____%____%____%____%____%____&mode=____ HTTP/1.1
-Host: 192.168.200.1
-Connection: Keep-Alive
-Accept-Encoding: gzip
-User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
-
- 
-Total value: 2	 Identified: 8
-, *
-Group: 8
-member: [8, 9, 10, 11, 26, 27, 28, 29, 30, 31, 112, 113, 114, 115, 116, 117]
-POST /cgi-bin/luci/;stok=____/api/misystem/parctl_set_url HTTP/1.1
-Content-Type: application/x-www-form-urlencoded
-Content-Length: ____
-Host: 192.168.200.1
-Connection: Keep-Alive
-Accept-Encoding: gzip
-User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
-
-mac=____%____%____%____%____%____&mode=black&opt=____&url=____ 
-Total value: 5	 Identified: 10
-, *
-Group: 9
-member: [12, 32, 38, 110, 118, 124]
-POST /cgi-bin/luci/;stok=____/api/misystem/parctl_set_filter HTTP/1.1
-Content-Type: application/x-www-form-urlencoded
-Content-Length: ____
-Host: 192.168.200.1
-Connection: Keep-Alive
-Accept-Encoding: gzip
-User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
-
-mac=____%____%____%____%____%____&mode=____ 
-Total value: 3	 Identified: 9
-, 
-Group: 10
-member: [14, 15, 16, 17, 34, 35, 36, 37, 120, 121, 122, 123]
-POST /cgi-bin/luci/;stok=____/api/misystem/parctl_set_url HTTP/1.1
-Content-Type: application/x-www-form-urlencoded
-Content-Length: ____
-Host: 192.168.200.1
-Connection: Keep-Alive
-Accept-Encoding: gzip
-User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
-
-mac=____%____%____%____%____%____&mode=white&opt=____&url=____ 
-Total value: 5	 Identified: 10
-, *
-Group: 11
-member: [46, 47, 94, 95, 132, 133, 163, 164]
-GET /cgi-bin/luci/;stok=____/api/xqnetwork/edit_device?model=0&option=____&mac=____%____%____%____%____%____ HTTP/1.1
-Host: 192.168.200.1
-Connection: Keep-Alive
-Accept-Encoding: gzip
-User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
-
- 
-Total value: 3	 Identified: 8
-, *
-Group: 12
-member: [48, 49, 96, 97, 134, 135, 165, 166]
-GET /cgi-bin/luci/;stok=____/api/xqsystem/dev_notify?mac=____%____%____%____%____%____&notify=____ HTTP/1.1
-Host: 192.168.200.1
-Connection: Keep-Alive
-Accept-Encoding: gzip
-User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
-
- 
-Total value: 2	 Identified: 8
-, *
-Group: 13
-member: [50, 55, 98, 102, 136, 167, 172]
-GET /cgi-bin/luci/;stok=____/api/misystem/qos_limit_flag?mac=____%____%____%____%____%____&flag=____ HTTP/1.1
-Host: 192.168.200.1
-Connection: Keep-Alive
-Accept-Encoding: gzip
-User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
-
- 
-Total value: 2	 Identified: 8
-, *
-Group: 14
-member: [51, 52, 54, 99, 100, 101, 137, 138, 139, 168, 169, 170]
-GET /cgi-bin/luci/;stok=____/api/misystem/qos_set_dev_info?mac=____%____%____%____%____%____&download=____&upload=____ HTTP/1.1
-Host: 192.168.200.1
-Connection: Keep-Alive
-Accept-Encoding: gzip
-User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
-
- 
-Total value: 3	 Identified: 9
-, 
-Group: 15
-member: [53, 171]
-GET /cgi-bin/luci/;stok=7593df2c6d2970808b6ae6a5acc9a4fe/api/misystem/qos_set_dev_info?mac=____%____%____%____%____%____&download=____&upload=____ HTTP/1.1
-Host: 192.168.200.1
-Connection: Keep-Alive
-Accept-Encoding: gzip
-User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
-
- 
-Total value: 3	 Identified: 8
-, *
-Group: 16
-member: [63, 64, 79, 80, 147, 149]
+member: [7, 8, 91, 93, 164, 166]
 GET /cgi-bin/luci/;stok=____/api/misystem/parctl_info?mac=____%____%____%____%____%____ HTTP/1.1
 Host: 192.168.200.1
 Connection: Keep-Alive
@@ -233,35 +121,22 @@ User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.O
 
  
 Total value: 1	 Identified: 7
-, 
-Group: 17
-member: [65]
-POST /cgi-bin/luci/;stok=a890ca59f7c4ecccba7e2bfbe233e230/api/misystem/parctl_add HTTP/1.1
+, *
+Group: 8
+member: [9, 11, 13, 94, 96]
+POST /cgi-bin/luci/;stok=____/api/misystem/parctl_add HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
-Content-Length: 88
+Content-Length: ____
 Host: 192.168.200.1
 Connection: Keep-Alive
 Accept-Encoding: gzip
 User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
 
-mac=48%3AD2%3A24%3A63%3A2E%3AAD&enable=1&frequency=1%2C3%2C5%2C7&timeseg=18%3A55-20%3A20 
-Total value: 5	 Identified: 0
+mac=____%____%____%____%____%____&enable=1&frequency=1%2C2%2C3%2C4%2C5%2C6%2C7&timeseg=____%____%____ 
+Total value: 5	 Identified: 11
 , *
-Group: 18
-member: [66]
-POST /cgi-bin/luci/;stok=a890ca59f7c4ecccba7e2bfbe233e230/api/misystem/parctl_update HTTP/1.1
-Content-Type: application/x-www-form-urlencoded
-Content-Length: 106
-Host: 192.168.200.1
-Connection: Keep-Alive
-Accept-Encoding: gzip
-User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
-
-mac=48%3AD2%3A24%3A63%3A2E%3AAD&id=48D224632EAD_1&enable=0&frequency=1%2C3%2C5%2C7&timeseg=18%3A55-20%3A20 
-Total value: 6	 Identified: 0
-, *
-Group: 19
-member: [67, 69, 71, 82, 84, 86, 151, 153, 155]
+Group: 9
+member: [10, 12, 14, 95, 97, 99, 168, 170, 172]
 POST /cgi-bin/luci/;stok=____/api/misystem/parctl_delete HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 Content-Length: ____
@@ -273,47 +148,63 @@ User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.O
 mac=____%____%____%____%____%____&id=____ 
 Total value: 3	 Identified: 9
 , *
-Group: 20
-member: [68, 154]
-POST /cgi-bin/luci/;stok=____/api/misystem/parctl_add HTTP/1.1
-Content-Type: application/x-www-form-urlencoded
-Content-Length: ____
+Group: 10
+member: [22, 23, 39, 40, 54, 55, 130, 131]
+GET /cgi-bin/luci/;stok=____/api/xqnetwork/edit_device?model=0&option=____&mac=____%____%____%____%____%____ HTTP/1.1
 Host: 192.168.200.1
 Connection: Keep-Alive
 Accept-Encoding: gzip
 User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
 
-mac=____%____%____%____%____%____&enable=1&frequency=____%____%____&timeseg=07%____%____ 
-Total value: 5	 Identified: 13
-, 
-Group: 21
-member: [70]
-POST /cgi-bin/luci/;stok=a890ca59f7c4ecccba7e2bfbe233e230/api/misystem/parctl_add HTTP/1.1
-Content-Type: application/x-www-form-urlencoded
-Content-Length: 92
+ 
+Total value: 3	 Identified: 8
+, *
+Group: 11
+member: [24, 25, 41, 42, 56, 57, 132, 133]
+GET /cgi-bin/luci/;stok=____/api/xqsystem/dev_notify?mac=____%____%____%____%____%____&notify=____ HTTP/1.1
 Host: 192.168.200.1
 Connection: Keep-Alive
 Accept-Encoding: gzip
 User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
 
-mac=48%3AD2%3A24%3A63%3A2E%3AAD&enable=1&frequency=1%2C2%2C3%2C4%2C5&timeseg=14%3A15-20%3A00 
-Total value: 5	 Identified: 0
-, 
-Group: 22
-member: [81, 83, 85]
-POST /cgi-bin/luci/;stok=a890ca59f7c4ecccba7e2bfbe233e230/api/misystem/parctl_add HTTP/1.1
-Content-Type: application/x-www-form-urlencoded
-Content-Length: ____
+ 
+Total value: 2	 Identified: 8
+, *
+Group: 12
+member: [26, 31, 43, 58, 62, 134, 138]
+GET /cgi-bin/luci/;stok=____/api/misystem/qos_limit_flag?mac=____%____%____%____%____%____&flag=____ HTTP/1.1
 Host: 192.168.200.1
 Connection: Keep-Alive
 Accept-Encoding: gzip
 User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
 
-mac=AC%3A84%3AC6%3A20%3AF5%3AC4&enable=1&frequency=1%2C2%2C3%2C4%2C5%2C6%2C7&timeseg=____%____%____ 
-Total value: 5	 Identified: 4
+ 
+Total value: 2	 Identified: 8
+, *
+Group: 13
+member: [27, 28, 29, 44, 45, 46, 59, 60, 61, 135, 136, 137]
+GET /cgi-bin/luci/;stok=____/api/misystem/qos_set_dev_info?mac=____%____%____%____%____%____&download=____&upload=____ HTTP/1.1
+Host: 192.168.200.1
+Connection: Keep-Alive
+Accept-Encoding: gzip
+User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
+
+ 
+Total value: 3	 Identified: 9
 , 
-Group: 23
-member: [90]
+Group: 14
+member: [30]
+GET /cgi-bin/luci/;stok=7593df2c6d2970808b6ae6a5acc9a4fe/api/misystem/qos_set_dev_info?mac=AC%3A84%3AC6%3A20%3AF5%3AC4&download=678.39996&upload=806.4 HTTP/1.1
+Host: 192.168.200.1
+Connection: Keep-Alive
+Accept-Encoding: gzip
+User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
+
+ 
+Total value: 3	 Identified: 0
+, 
+Group: 15
+member: [50]
 GET /cgi-bin/luci/;stok=ae3ec62571b279e3fc0a721d505abf09/api/xqnetwork/wifi_macfilter_info HTTP/1.1
 Host: 192.168.200.1
 Connection: Keep-Alive
@@ -323,9 +214,98 @@ User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.O
  
 Total value: 1	 Identified: 0
 , *
-Group: 24
-member: [148]
-POST /cgi-bin/luci/;stok=726524990b8bc6eed87dc34bec885a72/api/misystem/netacctl_set HTTP/1.1
+Group: 16
+member: [70, 78, 109, 117, 146, 152]
+GET /cgi-bin/luci/;stok=____/api/misystem/parctl_get_url?mac=____%____%____%____%____%____&mode=____ HTTP/1.1
+Host: 192.168.200.1
+Connection: Keep-Alive
+Accept-Encoding: gzip
+User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
+
+ 
+Total value: 2	 Identified: 8
+, *
+Group: 17
+member: [71, 72, 73, 74, 75, 76, 110, 111, 112, 113, 114, 115, 147, 148, 149, 150]
+POST /cgi-bin/luci/;stok=____/api/misystem/parctl_set_url HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Content-Length: ____
+Host: 192.168.200.1
+Connection: Keep-Alive
+Accept-Encoding: gzip
+User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
+
+mac=____%____%____%____%____%____&mode=black&opt=____&url=____ 
+Total value: 5	 Identified: 10
+, *
+Group: 18
+member: [77, 83, 116, 122, 151]
+POST /cgi-bin/luci/;stok=____/api/misystem/parctl_set_filter HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Content-Length: ____
+Host: 192.168.200.1
+Connection: Keep-Alive
+Accept-Encoding: gzip
+User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
+
+mac=____%____%____%____%____%____&mode=____ 
+Total value: 3	 Identified: 9
+, 
+Group: 19
+member: [79, 80, 81, 82, 118, 119, 120, 121, 153, 154, 155, 156]
+POST /cgi-bin/luci/;stok=____/api/misystem/parctl_set_url HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Content-Length: ____
+Host: 192.168.200.1
+Connection: Keep-Alive
+Accept-Encoding: gzip
+User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
+
+mac=____%____%____%____%____%____&mode=white&opt=____&url=____ 
+Total value: 5	 Identified: 10
+, *
+Group: 20
+member: [92, 165]
+POST /cgi-bin/luci/;stok=____/api/misystem/netacctl_set HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Content-Length: ____
+Host: 192.168.200.1
+Connection: Keep-Alive
+Accept-Encoding: gzip
+User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
+
+mac=____%____%____%____%____%____&enable=1&mode=time 
+Total value: 4	 Identified: 8
+, 
+Group: 21
+member: [98]
+POST /cgi-bin/luci/;stok=3ca0f47185a9fe5c3b4b1ff2beacc794/api/misystem/parctl_add HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 92
+Host: 192.168.200.1
+Connection: Keep-Alive
+Accept-Encoding: gzip
+User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
+
+mac=C0%3A56%3A27%3AB4%3ABB%3AF3&enable=1&frequency=1%2C2%2C3%2C4%2C5&timeseg=08%3A08-18%3A45 
+Total value: 5	 Identified: 0
+, 
+Group: 22
+member: [100]
+POST /cgi-bin/luci/;stok=3ca0f47185a9fe5c3b4b1ff2beacc794/api/misystem/netacctl_set HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 53
+Host: 192.168.200.1
+Connection: Keep-Alive
+Accept-Encoding: gzip
+User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
+
+mac=C0%3A56%3A27%3AB4%3ABB%3AF3&enable=1&mode=limited 
+Total value: 4	 Identified: 0
+, 
+Group: 23
+member: [101]
+POST /cgi-bin/luci/;stok=3ca0f47185a9fe5c3b4b1ff2beacc794/api/misystem/netacctl_set HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 Content-Length: 50
 Host: 192.168.200.1
@@ -333,11 +313,11 @@ Connection: Keep-Alive
 Accept-Encoding: gzip
 User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
 
-mac=80%3A35%3AC1%3A51%3A9F%3AD1&enable=1&mode=time 
+mac=C0%3A56%3A27%3AB4%3ABB%3AF3&enable=1&mode=none 
 Total value: 4	 Identified: 0
 , 
-Group: 25
-member: [150]
+Group: 24
+member: [167]
 POST /cgi-bin/luci/;stok=726524990b8bc6eed87dc34bec885a72/api/misystem/parctl_add HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 Content-Length: 80
@@ -349,8 +329,8 @@ User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.O
 mac=80%3A35%3AC1%3A51%3A9F%3AD1&enable=1&frequency=6%2C7&timeseg=06%3A05-07%3A59 
 Total value: 5	 Identified: 0
 , 
-Group: 26
-member: [152]
+Group: 25
+member: [169]
 POST /cgi-bin/luci/;stok=726524990b8bc6eed87dc34bec885a72/api/misystem/parctl_add HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 Content-Length: 76
@@ -361,6 +341,19 @@ User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.O
 
 mac=80%3A35%3AC1%3A51%3A9F%3AD1&enable=1&frequency=3&timeseg=21%3A57-22%3A14 
 Total value: 5	 Identified: 0
+, 
+Group: 26
+member: [171]
+POST /cgi-bin/luci/;stok=726524990b8bc6eed87dc34bec885a72/api/misystem/parctl_add HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 84
+Host: 192.168.200.1
+Connection: Keep-Alive
+Accept-Encoding: gzip
+User-Agent: Dalvik/2.1.0 (Linux; U; Android 8.1.0; Redmi Note 5 MIUI/V10.2.2.0.OEIMIXM)
+
+mac=80%3A35%3AC1%3A51%3A9F%3AD1&enable=1&frequency=1%2C3%2C5&timeseg=07%3A00-09%3A00 
+Total value: 5	 Identified: 0
 ]
-[[], [], [], [], [], [], [], [(10, 3, 96)], [(50, 3, 96)], [(50, 3, 96)], [(50, 3, 96)], [(14, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [], [], [], [], [(19, 4, 240)], [], [], [], [], [], [], [], [], [], []]
-[{48, 1}, {17, 37}, {18, 68, 38}, {28, 30, 60}]
+[[], [], [], [], [], [], [], [], [(50, 3, 96)], [], [(14, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [(10, 3, 96)], [], [], [(10, 3, 96)], [(50, 3, 96)], [(50, 3, 96)], [(50, 3, 96)], [], [], [], [], [], [], [], [], [], [], []]
+[{10, 67}, {56, 19, 30}, {25, 51}, {26, 52}, {27, 53}, {28, 54}, {29, 55}, {49, 35}]
